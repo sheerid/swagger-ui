@@ -200,6 +200,26 @@
         });
     </script>
 
+    <!-- maintain height if embedded in iframe -->
+    <script type="text/javascript">
+        var bodyHeight = 0;
+        var sendHeight = function() {
+            if (bodyHeight == document.body.offsetHeight) {
+                return;
+            } else {
+                bodyHeight = document.body.offsetHeight;
+                parent.postMessage("updateHeight:" + bodyHeight, "*");
+            }
+        };
+        if (self != top) {
+            jQuery('body').change(sendHeight);
+            jQuery('body').click(sendHeight);
+            window.setTimeout(function(){
+                sendHeight();
+            }, 500);
+        }
+    </script>
+
 </head>
 
 <body class="page-docs" style="zoom: 1;">
