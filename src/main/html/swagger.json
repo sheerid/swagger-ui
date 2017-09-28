@@ -1339,7 +1339,8 @@
         }
     },
     "info": {
-        "title": "SheerID REST 0.5",
+        "description": "Instant eligibility verification",
+        "title": "SheerID REST API",
         "version": "0.5"
     },
     "paths": {
@@ -1349,17 +1350,17 @@
             "operationId": "upload",
             "parameters": [
                 {
-                    "description": "one or more files, with parameter keys prefixed by <code>file<\/code> (Ex: <code>file0<\/code>, <code>file1<\/code>...). File type must be one of our <a href=\"/docs/asset-mime-types.html\">supported MIME types<\/a>.",
+                    "description": "one or more files, with parameter keys prefixed by `file` (Ex: `file0`, `file1`...). File type must be one of our [supported MIME types](/docs/asset-mime-types.html).",
                     "in": "formData",
-                    "name": "_various_",
+                    "name": "file",
                     "required": false,
-                    "type": "string"
+                    "type": "file"
                 },
                 {
                     "description": "a valid asset token obtained from [Issue Token](/docs/asset/issueToken.html)",
                     "in": "formData",
                     "name": "token",
-                    "required": false,
+                    "required": true,
                     "type": "string"
                 },
                 {
@@ -1438,7 +1439,7 @@
         }},
         "/oauth/{oauthProviderId}/data": {"get": {
             "consumes": [],
-            "description": "<strong>Obtain a dataset used to populate fields in a verifying application<\/strong>",
+            "description": "**Obtain a dataset used to populate fields in a verifying application**",
             "operationId": "oauthVerify",
             "parameters": [
                 {
@@ -1480,7 +1481,7 @@
         }},
         "/oauth/{oauthProviderId}/session": {"get": {
             "consumes": [],
-            "description": "<strong>Obtain an OAuth2 token using code obtained from authorization request<\/strong>",
+            "description": "**Obtain an OAuth2 token using code obtained from authorization request**",
             "operationId": "oauthRequestSession",
             "parameters": [
                 {
@@ -1536,7 +1537,7 @@
         }},
         "/verification": {"post": {
             "consumes": ["application/x-www-form-urlencoded"],
-            "description": "<strong>Perform a verification.<\/strong> This is the primary method of importance for most integrations.\n Fields to supply vary based on the affiliations the caller is interested in verifying and the type of verification being performed.  For a list of which fields are relevant for a particular type of request, see the <a href=\"/docs/fields.html\">verification field requirements documentation<\/a>.",
+            "description": "**Perform a verification.** This is the primary method of importance for most integrations.\n Fields to supply vary based on the affiliations the caller is interested in verifying and the type of verification being performed.  For a list of which fields are relevant for a particular type of request, see the [verification field requirements documentation](/docs/fields.html).",
             "operationId": "verify",
             "parameters": [
                 {
@@ -1714,7 +1715,7 @@
                     "type": "string"
                 },
                 {
-                    "description": "the identifier of an existing template (see [Create Template](/docs/template/createTemplate.html)) from which to source verification request configuration. If this value is supplied, any other request configuration directives (parameters prefixed with <code>_<\/code>) are ignored.",
+                    "description": "the identifier of an existing template (see [Create Template](/docs/template/createTemplate.html)) from which to source verification request configuration. If this value is supplied, any other request configuration directives (parameters prefixed with `_`) are ignored.",
                     "in": "formData",
                     "name": "templateId",
                     "required": false,
@@ -1765,7 +1766,7 @@
             },
             "post": {
                 "consumes": ["application/x-www-form-urlencoded"],
-                "description": "Update and re-submit an existing verification request.\n The previous response to this request must have a result of <code>null<\/code>, otherwise update is disallowed. Only identity data can be changed (parameter names as described by [List Fields](/docs/field/listFields.html)). Organization id/name or other configuration supplied with the original request is not modifiable.",
+                "description": "Update and re-submit an existing verification request.\n The previous response to this request must have a result of `null`, otherwise update is disallowed. Only identity data can be changed (parameter names as described by [List Fields](/docs/field/listFields.html)). Organization id/name or other configuration supplied with the original request is not modifiable.",
                 "operationId": "updateVerification",
                 "parameters": [
                     {

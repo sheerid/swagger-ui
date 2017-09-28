@@ -1339,7 +1339,8 @@
         }
     },
     "info": {
-        "title": "SheerID REST 0.5",
+        "description": "Instant eligibility verification",
+        "title": "SheerID REST API",
         "version": "0.5"
     },
     "paths": {
@@ -1369,7 +1370,7 @@
             "parameters": [],
             "produces": [],
             "responses": {"200": {
-                "description": "<code>302<\/code> redirect to [Get Account](/docs/account/getAccount.html) for the currently-authenticated account",
+                "description": "`302` redirect to [Get Account](/docs/account/getAccount.html) for the currently-authenticated account",
                 "schema": {"$ref": "#/definitions/dummy"}
             }},
             "summary": "Get Logged In Account",
@@ -1487,17 +1488,17 @@
             "operationId": "upload",
             "parameters": [
                 {
-                    "description": "one or more files, with parameter keys prefixed by <code>file<\/code> (Ex: <code>file0<\/code>, <code>file1<\/code>...). File type must be one of our <a href=\"/docs/asset-mime-types.html\">supported MIME types<\/a>.",
+                    "description": "one or more files, with parameter keys prefixed by `file` (Ex: `file0`, `file1`...). File type must be one of our [supported MIME types](/docs/asset-mime-types.html).",
                     "in": "formData",
-                    "name": "_various_",
+                    "name": "file",
                     "required": false,
-                    "type": "string"
+                    "type": "file"
                 },
                 {
                     "description": "a valid asset token obtained from [Issue Token](/docs/asset/issueToken.html)",
                     "in": "formData",
                     "name": "token",
-                    "required": false,
+                    "required": true,
                     "type": "string"
                 },
                 {
@@ -1821,7 +1822,7 @@
                     "type": "string"
                 },
                 {
-                    "description": "<code>true<\/code> to set <code>Content-Disposition: inline<\/code> header (so the data can be viewed in a browser if applicable), will use <code>Content-Disposition: attachment<\/code> by default.",
+                    "description": "`true` to set `Content-Disposition: inline` header (so the data can be viewed in a browser if applicable), will use `Content-Disposition: attachment` by default.",
                     "in": "query",
                     "name": "inline",
                     "required": false,
@@ -2648,7 +2649,7 @@
                 "operationId": "addNotifier",
                 "parameters": [
                     {
-                        "description": "the type of notifier to add, currently supported: <code>EMAIL<\/code>, <code>HTTP<\/code>",
+                        "description": "the type of notifier to add, currently supported: `EMAIL`, `HTTP`",
                         "in": "formData",
                         "name": "type",
                         "required": false,
@@ -2854,7 +2855,7 @@
         }},
         "/oauth/{oauthProviderId}/data": {"get": {
             "consumes": [],
-            "description": "<strong>Obtain a dataset used to populate fields in a verifying application<\/strong>",
+            "description": "**Obtain a dataset used to populate fields in a verifying application**",
             "operationId": "oauthVerify",
             "parameters": [
                 {
@@ -2896,7 +2897,7 @@
         }},
         "/oauth/{oauthProviderId}/session": {"get": {
             "consumes": [],
-            "description": "<strong>Obtain an OAuth2 token using code obtained from authorization request<\/strong>",
+            "description": "**Obtain an OAuth2 token using code obtained from authorization request**",
             "operationId": "oauthRequestSession",
             "parameters": [
                 {
@@ -2944,14 +2945,14 @@
                     "type": "array"
                 },
                 {
-                    "description": "a name or part of a name used to filter the results (case-insensitive)<br/>\n Example: <code>carolina<\/code> will match University of North Carolina, East Carolina University, etc.",
+                    "description": "a name or part of a name used to filter the results (case-insensitive)\n\n\n Example: `carolina` will match University of North Carolina, East Carolina University, etc.",
                     "in": "query",
                     "name": "name",
                     "required": false,
                     "type": "string"
                 },
                 {
-                    "description": "a flag indicating that organization names must start with a given name<br/>\n Example: <code>east carolina<\/code> will match East Carolina University but not University of East Carolina.",
+                    "description": "a flag indicating that organization names must start with a given name\n\n\n Example: `east carolina` will match East Carolina University but not University of East Carolina.",
                     "in": "query",
                     "name": "nameStartAnchored",
                     "required": false,
@@ -3051,14 +3052,14 @@
                     "type": "array"
                 },
                 {
-                    "description": "a name or part of a name used to filter the results (case-insensitive)<br/>\n Example: <code>carolina<\/code> will match University of North Carolina, East Carolina University, etc.",
+                    "description": "a name or part of a name used to filter the results (case-insensitive)\n\n\n Example: `carolina` will match University of North Carolina, East Carolina University, etc.",
                     "in": "query",
                     "name": "name",
                     "required": false,
                     "type": "string"
                 },
                 {
-                    "description": "a flag indicating that organization names must start with a given name<br/>\n Example: <code>east carolina<\/code> will match East Carolina University but not University of East Carolina.",
+                    "description": "a flag indicating that organization names must start with a given name\n\n\n Example: `east carolina` will match East Carolina University but not University of East Carolina.",
                     "in": "query",
                     "name": "nameStartAnchored",
                     "required": false,
@@ -3110,7 +3111,7 @@
                     "type": "array"
                 },
                 {
-                    "description": "<code>true<\/code> to return the organization's city, state, and postal code as available",
+                    "description": "`true` to return the organization's city, state, and postal code as available",
                     "in": "query",
                     "name": "includeLocation",
                     "required": false,
@@ -3165,7 +3166,7 @@
             "parameters": [],
             "produces": ["text/plain"],
             "responses": {"200": {
-                "description": "<code>pong<\/code>",
+                "description": "`pong`",
                 "schema": {"$ref": "#/definitions/dummy"}
             }},
             "summary": "Ping",
@@ -3187,7 +3188,7 @@
             },
             "post": {
                 "consumes": [],
-                "description": "Request a report.\n\n When the report has a <code>COMPLETE<\/code> status (as returned by [Retrieve Report](/docs/report/retrieveReport.html)), you can obtain the report data using [Get Report Data](/docs/report/getReportData.html).",
+                "description": "Request a report.\n\n When the report has a `COMPLETE` status (as returned by [Retrieve Report](/docs/report/retrieveReport.html)), you can obtain the report data using [Get Report Data](/docs/report/getReportData.html).",
                 "operationId": "requestReport",
                 "parameters": [
                     {
@@ -3228,14 +3229,14 @@
                         "type": "string"
                     },
                     {
-                        "description": "include specific named person data fields in report (as a comma-delimited list of field constants from [List Fields](/docs/field/listFields.html), or <code>*<\/code> to return all available data). Supplied fields are narrowed to match the data access policies for the calling user.",
+                        "description": "include specific named person data fields in report (as a comma-delimited list of field constants from [List Fields](/docs/field/listFields.html), or `*` to return all available data). Supplied fields are narrowed to match the data access policies for the calling user.",
                         "in": "formData",
                         "name": "fields",
                         "required": false,
                         "type": "string"
                     },
                     {
-                        "description": "a number of milliseconds into the past (from the time the report is requested) the report should cover. If <code>startDate<\/code> is supplied, this value is ignored.",
+                        "description": "a number of milliseconds into the past (from the time the report is requested) the report should cover. If `startDate` is supplied, this value is ignored.",
                         "format": "long",
                         "in": "formData",
                         "name": "delta",
@@ -3244,7 +3245,7 @@
                     },
                     {
                         "default": "true",
-                        "description": "<code>false<\/code> to disable email notification upon completion of report (default value: `true`)",
+                        "description": "`false` to disable email notification upon completion of report (default value: `true`)",
                         "in": "formData",
                         "name": "notifyEmail",
                         "required": false,
@@ -3372,7 +3373,7 @@
         },
         "/report/{reportId}/raw": {"get": {
             "consumes": [],
-            "description": "Get the raw report data in the requested format.\n\n For a detailed description of the data returned by this method, refer to the <a href=\"/docs/report.html\">Report Data Descriptions<\/a> documentation.",
+            "description": "Get the raw report data in the requested format.\n\n For a detailed description of the data returned by this method, refer to the [Report Data Descriptions](/docs/report.html) documentation.",
             "operationId": "getReportData",
             "parameters": [{
                 "description": "the ID of the report to fetch",
@@ -3728,13 +3729,6 @@
                         "type": "string"
                     },
                     {
-                        "description": "",
-                        "in": "formData",
-                        "name": "_various_",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "description": "CSV file content containing one or more entries to be added to this reward pool.",
                         "in": "formData",
                         "name": "data",
@@ -3928,7 +3922,7 @@
             }],
             "produces": [],
             "responses": {"200": {
-                "description": "<code>302<\/code> redirect to [Get Template](/docs/template/getTemplate.html) if supplied namespace is mapped to a valid template, <code>404<\/code> otherwise",
+                "description": "`302` redirect to [Get Template](/docs/template/getTemplate.html) if supplied namespace is mapped to a valid template, `404` otherwise",
                 "schema": {"$ref": "#/definitions/dummy"}
             }},
             "summary": "Get Template By Name",
@@ -4334,7 +4328,7 @@
             },
             "post": {
                 "consumes": [],
-                "description": "Create a new subuser within an existing account.\n Callers must be the account owner or have <code>USER_ADMIN<\/code> role.",
+                "description": "Create a new subuser within an existing account.\n Callers must be the account owner or have `USER_ADMIN` role.",
                 "operationId": "createUser",
                 "parameters": [
                     {
@@ -4486,17 +4480,17 @@
                     {
                         "description": "the role to be removed\n\nPossible values: `REPORTER`, `RESOURCE_MANAGER`, `REVIEWER`, `REVIEWER_MANAGER`, `REVIEW_REPORTER`, `REWARD_ADMIN`, `TEMPLATE_ADMIN`, `USER_ADMIN`, `ORGANIZATION_MANAGER`, `PROMOTION_MANAGER`, `CUSTOMER_SERVICE`",
                         "enum": [
-                            "REVIEW_REPORTER",
-                            "TEMPLATE_ADMIN",
                             "USER_ADMIN",
+                            "REVIEWER",
+                            "REVIEWER_MANAGER",
+                            "REVIEW_REPORTER",
+                            "ORGANIZATION_MANAGER",
                             "REWARD_ADMIN",
                             "PROMOTION_MANAGER",
-                            "REVIEWER",
-                            "RESOURCE_MANAGER",
-                            "CUSTOMER_SERVICE",
                             "REPORTER",
-                            "REVIEWER_MANAGER",
-                            "ORGANIZATION_MANAGER"
+                            "TEMPLATE_ADMIN",
+                            "CUSTOMER_SERVICE",
+                            "RESOURCE_MANAGER"
                         ],
                         "in": "path",
                         "name": "role",
@@ -4527,17 +4521,17 @@
                     {
                         "description": "the role to be added\n\nPossible values: `REPORTER`, `RESOURCE_MANAGER`, `REVIEWER`, `REVIEWER_MANAGER`, `REVIEW_REPORTER`, `REWARD_ADMIN`, `TEMPLATE_ADMIN`, `USER_ADMIN`, `ORGANIZATION_MANAGER`, `PROMOTION_MANAGER`, `CUSTOMER_SERVICE`",
                         "enum": [
-                            "REVIEW_REPORTER",
-                            "TEMPLATE_ADMIN",
                             "USER_ADMIN",
+                            "REVIEWER",
+                            "REVIEWER_MANAGER",
+                            "REVIEW_REPORTER",
+                            "ORGANIZATION_MANAGER",
                             "REWARD_ADMIN",
                             "PROMOTION_MANAGER",
-                            "REVIEWER",
-                            "RESOURCE_MANAGER",
-                            "CUSTOMER_SERVICE",
                             "REPORTER",
-                            "REVIEWER_MANAGER",
-                            "ORGANIZATION_MANAGER"
+                            "TEMPLATE_ADMIN",
+                            "CUSTOMER_SERVICE",
+                            "RESOURCE_MANAGER"
                         ],
                         "in": "path",
                         "name": "role",
@@ -4752,7 +4746,7 @@
             },
             "post": {
                 "consumes": ["application/x-www-form-urlencoded"],
-                "description": "<strong>Perform a verification.<\/strong> This is the primary method of importance for most integrations.\n Fields to supply vary based on the affiliations the caller is interested in verifying and the type of verification being performed.  For a list of which fields are relevant for a particular type of request, see the <a href=\"/docs/fields.html\">verification field requirements documentation<\/a>.",
+                "description": "**Perform a verification.** This is the primary method of importance for most integrations.\n Fields to supply vary based on the affiliations the caller is interested in verifying and the type of verification being performed.  For a list of which fields are relevant for a particular type of request, see the [verification field requirements documentation](/docs/fields.html).",
                 "operationId": "verify",
                 "parameters": [
                     {
@@ -4930,7 +4924,7 @@
                         "type": "string"
                     },
                     {
-                        "description": "the identifier of an existing template (see [Create Template](/docs/template/createTemplate.html)) from which to source verification request configuration. If this value is supplied, any other request configuration directives (parameters prefixed with <code>_<\/code>) are ignored.",
+                        "description": "the identifier of an existing template (see [Create Template](/docs/template/createTemplate.html)) from which to source verification request configuration. If this value is supplied, any other request configuration directives (parameters prefixed with `_`) are ignored.",
                         "in": "formData",
                         "name": "templateId",
                         "required": false,
@@ -5115,7 +5109,7 @@
             },
             "post": {
                 "consumes": ["application/x-www-form-urlencoded"],
-                "description": "Update and re-submit an existing verification request.\n The previous response to this request must have a result of <code>null<\/code>, otherwise update is disallowed. Only identity data can be changed (parameter names as described by [List Fields](/docs/field/listFields.html)). Organization id/name or other configuration supplied with the original request is not modifiable.",
+                "description": "Update and re-submit an existing verification request.\n The previous response to this request must have a result of `null`, otherwise update is disallowed. Only identity data can be changed (parameter names as described by [List Fields](/docs/field/listFields.html)). Organization id/name or other configuration supplied with the original request is not modifiable.",
                 "operationId": "updateVerification",
                 "parameters": [
                     {
@@ -5238,7 +5232,7 @@
         }},
         "/verification/{requestId}/submit": {"post": {
             "consumes": [],
-            "description": "Submit a prepared verification request.\n Request must be in the <code>NEW<\/code> status as created by [Prepare Verification Request](/docs/verification/prepareVerificationRequest.html).",
+            "description": "Submit a prepared verification request.\n Request must be in the `NEW` status as created by [Prepare Verification Request](/docs/verification/prepareVerificationRequest.html).",
             "operationId": "submitVerificationRequest",
             "parameters": [{
                 "description": "the identifier returned with the original request",
