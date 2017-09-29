@@ -1357,7 +1357,7 @@
                     "type": "file"
                 },
                 {
-                    "description": "a valid asset token obtained from [Issue Token](/docs/asset/issueToken.html)",
+                    "description": "a valid asset token obtained from [Issue Token](#!/Asset/issueToken)",
                     "in": "formData",
                     "name": "token",
                     "required": true,
@@ -1365,7 +1365,7 @@
                 },
                 {
                     "default": "true",
-                    "description": "to merge multiple documents into one when possible (default value: `true`)",
+                    "description": "to merge multiple documents into one when possible",
                     "in": "formData",
                     "name": "mergeMultipleDocuments",
                     "required": false,
@@ -1373,6 +1373,34 @@
                 },
                 {
                     "description": "the type of document the user is uploading",
+                    "enum": [
+                        "ACCEPTANCE_LETTER",
+                        "ARTICLES_OF_INCORPORATION",
+                        "BUSINESS_TAX_FORM_PAGE1",
+                        "CLASS_SCHEDULE",
+                        "DATED_ID_CARD",
+                        "DBA_REGISTRATION",
+                        "DD214",
+                        "ID_CARD",
+                        "INSURANCE_CARD",
+                        "IRS_SCHEDULE_B1_FORM_1065",
+                        "IRS_SCHEDULE_C_OR_CEZ_PAGE_1",
+                        "IRS_SCHEDULE_G_FORM_1120",
+                        "IRS_SCHEDULE_K1_FORM_1065",
+                        "IRS_SCHEDULE_K1_FORM_1120S",
+                        "LEASE_AGREEMENT",
+                        "LETTER_OF_AUTHORIZATION",
+                        "OFFICIAL_LETTER",
+                        "OTHER",
+                        "PAY_STUB",
+                        "POWER_OF_ATTORNEY",
+                        "REGISTRATION_RECEIPT",
+                        "REPORT_CARD",
+                        "SECRETARY_OF_STATE_FILING",
+                        "TRANSCRIPT",
+                        "TUITION_RECEIPT",
+                        "VENDOR_STATEMENT"
+                    ],
                     "in": "formData",
                     "name": "assetType",
                     "required": false,
@@ -1402,7 +1430,7 @@
             ],
             "produces": ["application/json"],
             "responses": {"200": {
-                "description": "A list of [Asset](/docs/model.html#Asset) objects",
+                "description": "A list of [Asset](#!/definitions/Asset) objects",
                 "schema": {"$ref": "#/definitions/Asset"}
             }},
             "summary": "Upload",
@@ -1410,17 +1438,18 @@
         }},
         "/asset/token": {"post": {
             "consumes": [],
-            "description": "Issue a token to facilitate an Asset upload via [Upload](/docs/asset/upload.html).",
+            "description": "Issue a token to facilitate an Asset upload via [Upload](#!/Asset/upload).",
             "operationId": "issueToken",
             "parameters": [
                 {
                     "description": "the identifier of the request to which the Assets will be attached",
                     "in": "formData",
                     "name": "requestId",
-                    "required": false,
+                    "required": true,
                     "type": "string"
                 },
                 {
+                    "default": "86400000",
                     "description": "time (in milliseconds) before the token expires (default: 1 day)",
                     "format": "long",
                     "in": "formData",
@@ -1431,88 +1460,11 @@
             ],
             "produces": ["application/json"],
             "responses": {"200": {
-                "description": "A single [ExpiringToken](/docs/model.html#ExpiringToken) object",
+                "description": "A single [ExpiringToken](#!/definitions/ExpiringToken) object",
                 "schema": {"$ref": "#/definitions/ExpiringToken"}
             }},
             "summary": "Issue Token",
             "tags": ["Asset"]
-        }},
-        "/oauth/{oauthProviderId}/data": {"get": {
-            "consumes": [],
-            "description": "**Obtain a dataset used to populate fields in a verifying application**",
-            "operationId": "oauthVerify",
-            "parameters": [
-                {
-                    "description": "the provider name used to obtain the auth token",
-                    "in": "path",
-                    "name": "oauthProviderId",
-                    "required": true,
-                    "type": "string"
-                },
-                {
-                    "description": "the code obtained from the authorization API call, in lieu of a sessionToken, if the call should obtain the session token in an OAuth2 workflow prior to requesting profile data",
-                    "in": "query",
-                    "name": "code",
-                    "required": false,
-                    "type": "string"
-                },
-                {
-                    "description": "",
-                    "in": "query",
-                    "name": "sessionToken",
-                    "required": false,
-                    "type": "string"
-                },
-                {
-                    "description": "",
-                    "in": "query",
-                    "name": "URL",
-                    "required": false,
-                    "type": "string"
-                }
-            ],
-            "produces": ["application/json"],
-            "responses": {"200": {
-                "description": "a basic JSON object with key-value pairs of source data to be used to auto-populate fields in the requesting verifying app/page",
-                "schema": {"$ref": "#/definitions/dummy"}
-            }},
-            "summary": "Oauth Verify",
-            "tags": ["OAuthSource"]
-        }},
-        "/oauth/{oauthProviderId}/session": {"get": {
-            "consumes": [],
-            "description": "**Obtain an OAuth2 token using code obtained from authorization request**",
-            "operationId": "oauthRequestSession",
-            "parameters": [
-                {
-                    "description": "the provider name used to obtain the auth token",
-                    "in": "path",
-                    "name": "oauthProviderId",
-                    "required": true,
-                    "type": "string"
-                },
-                {
-                    "description": "the code obtained from the authorization API call",
-                    "in": "query",
-                    "name": "code",
-                    "required": false,
-                    "type": "string"
-                },
-                {
-                    "description": "",
-                    "in": "query",
-                    "name": "URL",
-                    "required": false,
-                    "type": "string"
-                }
-            ],
-            "produces": ["application/json"],
-            "responses": {"200": {
-                "description": "the session token obtained from the external OAuth2 API",
-                "schema": {"$ref": "#/definitions/dummy"}
-            }},
-            "summary": "Oauth Request Session",
-            "tags": ["OAuthSource"]
         }},
         "/required_fields": {"get": {
             "consumes": [],
@@ -1576,7 +1528,7 @@
                     "type": "string"
                 },
                 {
-                    "description": "an optional organization id, see [List Organizations](/docs/organization/listOrganizations.html)",
+                    "description": "an optional organization id, see [List Organizations](#!/Organization/listOrganizations)",
                     "format": "long",
                     "in": "formData",
                     "name": "organizationId",
@@ -1591,16 +1543,16 @@
                     "type": "string"
                 },
                 {
-                    "description": "an organization type (see [List Organization Types](/docs/organizationType/listOrganizationTypes.html)) to help when matching the organization name.  If `organizationId` is supplied or `organizationName` is not supplied, this parameter is ignored.\n\nPossible values: `UNIVERSITY`, `MEMBERSHIP`, `MILITARY`, `FIRST_RESPONDER`, `MEDICAL`, `NON_PROFIT`, `CORPORATE`, `K12`",
+                    "description": "an organization type (see [List Organization Types](#!/OrganizationType/listOrganizationTypes)) to help when matching the organization name.  If `organizationId` is supplied or `organizationName` is not supplied, this parameter is ignored.\n\nPossible values: `UNIVERSITY`, `MEMBERSHIP`, `MILITARY`, `FIRST_RESPONDER`, `MEDICAL`, `NON_PROFIT`, `CORPORATE`, `K12`",
                     "enum": [
-                        "UNIVERSITY",
+                        "CORPORATE",
+                        "FIRST_RESPONDER",
+                        "K12",
+                        "MEDICAL",
                         "MEMBERSHIP",
                         "MILITARY",
-                        "FIRST_RESPONDER",
-                        "MEDICAL",
                         "NON_PROFIT",
-                        "CORPORATE",
-                        "K12"
+                        "UNIVERSITY"
                     ],
                     "in": "formData",
                     "name": "organizationType",
@@ -1608,6 +1560,7 @@
                     "type": "string"
                 },
                 {
+                    "default": "true",
                     "description": "`false` to disable matching of organizationName. If `organizationId` is supplied or `organizationName` is not supplied, this parameter is ignored.",
                     "in": "formData",
                     "name": "matchName",
@@ -1615,34 +1568,34 @@
                     "type": "boolean"
                 },
                 {
-                    "description": "A comma-delimited list of affiliation type names (see [List Affiliation Types](/docs/affiliationType/listAffiliationTypes.html)). Defines the affiliations the requestor deems acceptable for a given verification. (For example, when attempting to verify that an individual is either a full-time or part-time student: `_affiliationTypes=STUDENT_FULL_TIME,STUDENT_PART_TIME`",
+                    "description": "A comma-delimited list of affiliation type names (see [List Affiliation Types](#!/AffiliationType/listAffiliationTypes)). Defines the affiliations the requestor deems acceptable for a given verification. (For example, when attempting to verify that an individual is either a full-time or part-time student: `_affiliationTypes=STUDENT_FULL_TIME,STUDENT_PART_TIME`",
                     "enum": [
+                        "ACTIVE_DUTY",
+                        "ALUMNUS",
+                        "BUSINESS",
+                        "BUSINESS_CONTACT",
+                        "CIVILIAN_EMPLOYEE",
+                        "CONTRACTOR",
+                        "CUSTOMER",
+                        "DISABLED_VETERAN",
+                        "EMPLOYEE",
+                        "EMT",
+                        "FACULTY",
+                        "FIREFIGHTER",
+                        "GRADUATE",
+                        "MEMBER",
+                        "MILITARY_FAMILY",
+                        "MILITARY_RETIREE",
+                        "NON_PROFIT",
+                        "NURSE",
+                        "OWNER",
+                        "POLICE",
+                        "RESELLER",
+                        "RESERVIST",
                         "STUDENT_COLLEGE_BOUND",
                         "STUDENT_FULL_TIME",
                         "STUDENT_PART_TIME",
-                        "GRADUATE",
-                        "ALUMNUS",
-                        "FACULTY",
-                        "EMPLOYEE",
-                        "RESELLER",
-                        "NON_PROFIT",
-                        "ACTIVE_DUTY",
-                        "VETERAN",
-                        "RESERVIST",
-                        "MILITARY_FAMILY",
-                        "MILITARY_RETIREE",
-                        "DISABLED_VETERAN",
-                        "CIVILIAN_EMPLOYEE",
-                        "FIREFIGHTER",
-                        "POLICE",
-                        "EMT",
-                        "NURSE",
-                        "MEMBER",
-                        "CUSTOMER",
-                        "OWNER",
-                        "BUSINESS",
-                        "BUSINESS_CONTACT",
-                        "CONTRACTOR"
+                        "VETERAN"
                     ],
                     "in": "formData",
                     "name": "_affiliationTypes",
@@ -1650,15 +1603,15 @@
                     "type": "string"
                 },
                 {
-                    "description": "A comma-delimited list of verification type names (see [List Verification Types](/docs/verificationType/listVerificationTypes.html)). Defines the requestor's list of acceptable techniques that may be used to verify an individual.",
+                    "description": "A comma-delimited list of verification type names (see [List Verification Types](#!/VerificationType/listVerificationTypes)). Defines the requestor's list of acceptable techniques that may be used to verify an individual.",
                     "enum": [
-                        "HONOR_SYSTEM",
-                        "VALIDATION",
-                        "IP_ADDRESS",
-                        "EMAIL_LOOP",
+                        "ASSET_REVIEW",
                         "AUTHORITATIVE",
+                        "EMAIL_LOOP",
+                        "HONOR_SYSTEM",
+                        "IP_ADDRESS",
                         "SSO",
-                        "ASSET_REVIEW"
+                        "VALIDATION"
                     ],
                     "in": "formData",
                     "name": "_verificationTypes",
@@ -1666,34 +1619,34 @@
                     "type": "string"
                 },
                 {
-                    "description": "A comma-delimited list of asset type names (see [List Asset Types](/docs/assetType/listAssetTypes.html)). Defines the requestor's list of acceptable documents for use with `ASSET_REVIEW` verification types.  If `ASSET_REVIEW` is not an allowable verification type, this configuration is ignored.",
+                    "description": "A comma-delimited list of asset type names (see [List Asset Types](#!/AssetType/listAssetTypes)). Defines the requestor's list of acceptable documents for use with `ASSET_REVIEW` verification types.  If `ASSET_REVIEW` is not an allowable verification type, this configuration is ignored.",
                     "enum": [
-                        "ID_CARD",
+                        "ACCEPTANCE_LETTER",
+                        "ARTICLES_OF_INCORPORATION",
+                        "BUSINESS_TAX_FORM_PAGE1",
+                        "CLASS_SCHEDULE",
                         "DATED_ID_CARD",
+                        "DBA_REGISTRATION",
+                        "DD214",
+                        "ID_CARD",
+                        "INSURANCE_CARD",
+                        "IRS_SCHEDULE_B1_FORM_1065",
+                        "IRS_SCHEDULE_C_OR_CEZ_PAGE_1",
+                        "IRS_SCHEDULE_G_FORM_1120",
+                        "IRS_SCHEDULE_K1_FORM_1065",
+                        "IRS_SCHEDULE_K1_FORM_1120S",
+                        "LEASE_AGREEMENT",
+                        "LETTER_OF_AUTHORIZATION",
                         "OFFICIAL_LETTER",
                         "OTHER",
                         "PAY_STUB",
-                        "ACCEPTANCE_LETTER",
-                        "CLASS_SCHEDULE",
+                        "POWER_OF_ATTORNEY",
+                        "REGISTRATION_RECEIPT",
+                        "REPORT_CARD",
+                        "SECRETARY_OF_STATE_FILING",
                         "TRANSCRIPT",
                         "TUITION_RECEIPT",
-                        "REGISTRATION_RECEIPT",
-                        "INSURANCE_CARD",
-                        "DD214",
-                        "IRS_SCHEDULE_G_FORM_1120",
-                        "IRS_SCHEDULE_K1_FORM_1120S",
-                        "IRS_SCHEDULE_K1_FORM_1065",
-                        "IRS_SCHEDULE_C_OR_CEZ_PAGE_1",
-                        "IRS_SCHEDULE_B1_FORM_1065",
-                        "REPORT_CARD",
-                        "DBA_REGISTRATION",
-                        "BUSINESS_TAX_FORM_PAGE1",
-                        "ARTICLES_OF_INCORPORATION",
-                        "SECRETARY_OF_STATE_FILING",
-                        "VENDOR_STATEMENT",
-                        "LEASE_AGREEMENT",
-                        "LETTER_OF_AUTHORIZATION",
-                        "POWER_OF_ATTORNEY"
+                        "VENDOR_STATEMENT"
                     ],
                     "in": "formData",
                     "name": "_assetTypes",
@@ -1701,7 +1654,7 @@
                     "type": "string"
                 },
                 {
-                    "description": "A comma-delimited list of Reward IDs (see [List Rewards](/docs/reward/listRewards.html)). Defines any rewards to be issued when an individual is verified.",
+                    "description": "A comma-delimited list of Reward IDs (see [List Rewards](#!/Reward/listRewards)). Defines any rewards to be issued when an individual is verified.",
                     "in": "formData",
                     "name": "_rewardIds",
                     "required": false,
@@ -1715,21 +1668,21 @@
                     "type": "string"
                 },
                 {
-                    "description": "the identifier of an existing template (see [Create Template](/docs/template/createTemplate.html)) from which to source verification request configuration. If this value is supplied, any other request configuration directives (parameters prefixed with `_`) are ignored.",
+                    "description": "the identifier of an existing template (see [Create Template](#!/Template/createTemplate)) from which to source verification request configuration. If this value is supplied, any other request configuration directives (parameters prefixed with `_`) are ignored.",
                     "in": "formData",
                     "name": "templateId",
                     "required": false,
                     "type": "string"
                 },
                 {
-                    "description": "",
+                    "description": "a custom identifier for tracking a unique end-user as recognized by a client system",
                     "in": "formData",
                     "name": "endUserId",
                     "required": false,
                     "type": "string"
                 },
                 {
-                    "description": "",
+                    "description": "the end-user's IP address, may be supplied in situations where the API is invoked by an intermediate server",
                     "in": "formData",
                     "name": "endUserIp",
                     "required": false,
@@ -1738,7 +1691,7 @@
             ],
             "produces": ["application/json"],
             "responses": {"200": {
-                "description": "A single [VerificationResponse](/docs/model.html#VerificationResponse) object",
+                "description": "A single [VerificationResponse](#!/definitions/VerificationResponse) object",
                 "schema": {"$ref": "#/definitions/VerificationResponse"}
             }},
             "summary": "Verify",
@@ -1758,7 +1711,7 @@
                 }],
                 "produces": ["application/json"],
                 "responses": {"200": {
-                    "description": "A single [VerificationResponse](/docs/model.html#VerificationResponse) object",
+                    "description": "A single [VerificationResponse](#!/definitions/VerificationResponse) object",
                     "schema": {"$ref": "#/definitions/VerificationResponse"}
                 }},
                 "summary": "Inquire",
@@ -1766,7 +1719,7 @@
             },
             "post": {
                 "consumes": ["application/x-www-form-urlencoded"],
-                "description": "Update and re-submit an existing verification request.\n The previous response to this request must have a result of `null`, otherwise update is disallowed. Only identity data can be changed (parameter names as described by [List Fields](/docs/field/listFields.html)). Organization id/name or other configuration supplied with the original request is not modifiable.",
+                "description": "Update and re-submit an existing verification request.\n The previous response to this request must have a result of `null`, otherwise update is disallowed. Only identity data can be changed (parameter names as described by [List Fields](#!/Field/listFields)). Organization id/name or other configuration supplied with the original request is not modifiable.",
                 "operationId": "updateVerification",
                 "parameters": [
                     {
@@ -1814,7 +1767,7 @@
                 ],
                 "produces": ["application/json"],
                 "responses": {"200": {
-                    "description": "A single [VerificationResponse](/docs/model.html#VerificationResponse) object",
+                    "description": "A single [VerificationResponse](#!/definitions/VerificationResponse) object",
                     "schema": {"$ref": "#/definitions/VerificationResponse"}
                 }},
                 "summary": "Update Verification",
