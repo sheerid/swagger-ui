@@ -56,7 +56,8 @@
                         "BUSINESS",
                         "BUSINESS_CONTACT",
                         "CONTRACTOR"
-                    ]
+                    ],
+                    "type": "string"
                 },
                 "updated": {
                     "format": "long",
@@ -66,9 +67,35 @@
             "type": "object"
         },
         "AffiliationType": {
-            "description": "placeholder",
-            "properties": {},
-            "type": "object"
+            "enum": [
+                "ACTIVE_DUTY",
+                "ALUMNUS",
+                "BUSINESS",
+                "BUSINESS_CONTACT",
+                "CIVILIAN_EMPLOYEE",
+                "CONTRACTOR",
+                "CUSTOMER",
+                "DISABLED_VETERAN",
+                "EMPLOYEE",
+                "EMT",
+                "FACULTY",
+                "FIREFIGHTER",
+                "GRADUATE",
+                "MEMBER",
+                "MILITARY_FAMILY",
+                "MILITARY_RETIREE",
+                "NON_PROFIT",
+                "NURSE",
+                "OWNER",
+                "POLICE",
+                "RESELLER",
+                "RESERVIST",
+                "STUDENT_COLLEGE_BOUND",
+                "STUDENT_FULL_TIME",
+                "STUDENT_PART_TIME",
+                "VETERAN"
+            ],
+            "type": "string"
         },
         "AmbiguousOrganizationVerificationError": {
             "properties": {
@@ -116,7 +143,8 @@
                         "LEASE_AGREEMENT",
                         "LETTER_OF_AUTHORIZATION",
                         "POWER_OF_ATTORNEY"
-                    ]
+                    ],
+                    "type": "string"
                 },
                 "assetTypeDescription": {"type": "string"},
                 "comments": {
@@ -160,21 +188,51 @@
                         "ACCEPTED",
                         "PENDING_REVIEW",
                         "REJECTED"
-                    ]
+                    ],
+                    "type": "string"
                 },
                 "type": {"type": "string"}
             },
             "type": "object"
         },
         "AssetStatus": {
-            "description": "placeholder",
-            "properties": {},
-            "type": "object"
+            "enum": [
+                "ACCEPTED",
+                "PENDING_REVIEW",
+                "REJECTED"
+            ],
+            "type": "string"
         },
         "AssetType": {
-            "description": "placeholder",
-            "properties": {},
-            "type": "object"
+            "enum": [
+                "ACCEPTANCE_LETTER",
+                "ARTICLES_OF_INCORPORATION",
+                "BUSINESS_TAX_FORM_PAGE1",
+                "CLASS_SCHEDULE",
+                "DATED_ID_CARD",
+                "DBA_REGISTRATION",
+                "DD214",
+                "ID_CARD",
+                "INSURANCE_CARD",
+                "IRS_SCHEDULE_B1_FORM_1065",
+                "IRS_SCHEDULE_C_OR_CEZ_PAGE_1",
+                "IRS_SCHEDULE_G_FORM_1120",
+                "IRS_SCHEDULE_K1_FORM_1065",
+                "IRS_SCHEDULE_K1_FORM_1120S",
+                "LEASE_AGREEMENT",
+                "LETTER_OF_AUTHORIZATION",
+                "OFFICIAL_LETTER",
+                "OTHER",
+                "PAY_STUB",
+                "POWER_OF_ATTORNEY",
+                "REGISTRATION_RECEIPT",
+                "REPORT_CARD",
+                "SECRETARY_OF_STATE_FILING",
+                "TRANSCRIPT",
+                "TUITION_RECEIPT",
+                "VENDOR_STATEMENT"
+            ],
+            "type": "string"
         },
         "Attribute": {
             "description": "placeholder",
@@ -234,8 +292,14 @@
         },
         "CertificationRequest": {
             "properties": {
-                "attribute": {"$ref": "#/definitions/Attribute"},
-                "config": {"$ref": "#/definitions/CertificationRequestConfig"},
+                "attribute": {
+                    "$ref": "#/definitions/Attribute",
+                    "type": "string"
+                },
+                "config": {
+                    "$ref": "#/definitions/CertificationRequestConfig",
+                    "type": "string"
+                },
                 "metadata": {"type": "string"},
                 "timestamp": {
                     "format": "long",
@@ -259,7 +323,10 @@
                     "type": "array"
                 },
                 "metadata": {"type": "string"},
-                "request": {"$ref": "#/definitions/CertificationRequest"},
+                "request": {
+                    "$ref": "#/definitions/CertificationRequest",
+                    "type": "string"
+                },
                 "requestId": {"type": "string"},
                 "result": {
                     "enum": [
@@ -276,7 +343,8 @@
                         "OPEN",
                         "PENDING",
                         "COMPLETE"
-                    ]
+                    ],
+                    "type": "string"
                 },
                 "timestamp": {
                     "format": "long",
@@ -330,7 +398,8 @@
                         "ACTIVE",
                         "EXPIRED",
                         "USED"
-                    ]
+                    ],
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -366,13 +435,17 @@
                         "BUSINESS",
                         "BUSINESS_CONTACT",
                         "CONTRACTOR"
-                    ]
+                    ],
+                    "type": "string"
                 },
                 "fields": {"type": "string"},
                 "id": {"type": "string"},
                 "name": {"type": "string"},
                 "orgParameters": {"type": "string"},
-                "organization": {"$ref": "#/definitions/Organization"},
+                "organization": {
+                    "$ref": "#/definitions/Organization",
+                    "type": "string"
+                },
                 "updated": {
                     "format": "long",
                     "type": "number"
@@ -411,7 +484,8 @@
                         "BUSINESS",
                         "BUSINESS_CONTACT",
                         "CONTRACTOR"
-                    ]
+                    ],
+                    "type": "string"
                 },
                 "expirationDate": {
                     "format": "long",
@@ -457,7 +531,8 @@
                         "BUSINESS",
                         "BUSINESS_CONTACT",
                         "CONTRACTOR"
-                    ]
+                    ],
+                    "type": "string"
                 },
                 "entryCount": {
                     "format": "long",
@@ -467,7 +542,10 @@
                 "id": {"type": "string"},
                 "name": {"type": "string"},
                 "orgParameters": {"type": "string"},
-                "organization": {"$ref": "#/definitions/Organization"},
+                "organization": {
+                    "$ref": "#/definitions/Organization",
+                    "type": "string"
+                },
                 "updated": {
                     "format": "long",
                     "type": "number"
@@ -487,9 +565,14 @@
             "type": "object"
         },
         "EventType": {
-            "description": "placeholder",
-            "properties": {},
-            "type": "object"
+            "enum": [
+                "ASYNCHRONOUS_UPDATE",
+                "CREATE",
+                "DATA_EXPIRATION",
+                "DEACTIVATE",
+                "SYNCHRONOUS_UPDATE"
+            ],
+            "type": "string"
         },
         "ExpiringToken": {
             "properties": {
@@ -527,7 +610,10 @@
                 "name": {"type": "string"},
                 "required": {"type": "boolean"},
                 "type": {"type": "string"},
-                "values": {"$ref": "#/definitions/Range"}
+                "values": {
+                    "$ref": "#/definitions/Range",
+                    "type": "string"
+                }
             },
             "type": "object"
         },
@@ -576,7 +662,8 @@
                         "ASYNCHRONOUS_UPDATE",
                         "DEACTIVATE",
                         "DATA_EXPIRATION"
-                    ]
+                    ],
+                    "type": "string"
                 },
                 "notifierId": {"type": "string"},
                 "notifierType": {
@@ -586,7 +673,8 @@
                         "HTTP",
                         "SYSTEM_OUT",
                         "NEXTERNAL"
-                    ]
+                    ],
+                    "type": "string"
                 },
                 "requestId": {"type": "string"},
                 "responseId": {"type": "string"},
@@ -606,7 +694,8 @@
                         "REVOKED",
                         "NOT_APPROVED",
                         "INCONCLUSIVE"
-                    ]
+                    ],
+                    "type": "string"
                 },
                 "verificationStatus": {
                     "$ref": "#/definitions/VerificationStatus",
@@ -615,7 +704,8 @@
                         "OPEN",
                         "PENDING",
                         "COMPLETE"
-                    ]
+                    ],
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -631,7 +721,8 @@
                         "ASYNCHRONOUS_UPDATE",
                         "DEACTIVATE",
                         "DATA_EXPIRATION"
-                    ]
+                    ],
+                    "type": "string"
                 },
                 "notifierId": {"type": "string"},
                 "notifierType": {
@@ -641,7 +732,8 @@
                         "HTTP",
                         "SYSTEM_OUT",
                         "NEXTERNAL"
-                    ]
+                    ],
+                    "type": "string"
                 },
                 "requestId": {"type": "string"},
                 "responseId": {"type": "string"},
@@ -662,7 +754,8 @@
                         "REVOKED",
                         "NOT_APPROVED",
                         "INCONCLUSIVE"
-                    ]
+                    ],
+                    "type": "string"
                 },
                 "verificationStatus": {
                     "$ref": "#/definitions/VerificationStatus",
@@ -671,7 +764,8 @@
                         "OPEN",
                         "PENDING",
                         "COMPLETE"
-                    ]
+                    ],
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -686,7 +780,8 @@
                         "ASYNCHRONOUS_UPDATE",
                         "DEACTIVATE",
                         "DATA_EXPIRATION"
-                    ]
+                    ],
+                    "type": "string"
                 },
                 "notifierId": {"type": "string"},
                 "notifierType": {
@@ -696,7 +791,8 @@
                         "HTTP",
                         "SYSTEM_OUT",
                         "NEXTERNAL"
-                    ]
+                    ],
+                    "type": "string"
                 },
                 "requestId": {"type": "string"},
                 "responseId": {"type": "string"},
@@ -721,7 +817,8 @@
                         "REVOKED",
                         "NOT_APPROVED",
                         "INCONCLUSIVE"
-                    ]
+                    ],
+                    "type": "string"
                 },
                 "verificationStatus": {
                     "$ref": "#/definitions/VerificationStatus",
@@ -730,7 +827,8 @@
                         "OPEN",
                         "PENDING",
                         "COMPLETE"
-                    ]
+                    ],
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -758,7 +856,8 @@
                         "ASYNCHRONOUS_UPDATE",
                         "DEACTIVATE",
                         "DATA_EXPIRATION"
-                    ]
+                    ],
+                    "type": "string"
                 },
                 "result": {
                     "$ref": "#/definitions/VerificationResult",
@@ -766,7 +865,8 @@
                         "TRUE",
                         "FALSE",
                         "UNKNOWN"
-                    ]
+                    ],
+                    "type": "string"
                 },
                 "status": {
                     "$ref": "#/definitions/VerificationStatus",
@@ -775,7 +875,8 @@
                         "OPEN",
                         "PENDING",
                         "COMPLETE"
-                    ]
+                    ],
+                    "type": "string"
                 },
                 "templateId": {"type": "string"},
                 "tier": {
@@ -792,7 +893,8 @@
                         "AUTHORITATIVE",
                         "SSO",
                         "ASSET_REVIEW"
-                    ]
+                    ],
+                    "type": "string"
                 },
                 "verificationTypeOfRecord": {
                     "$ref": "#/definitions/VerificationType",
@@ -804,15 +906,18 @@
                         "AUTHORITATIVE",
                         "SSO",
                         "ASSET_REVIEW"
-                    ]
+                    ],
+                    "type": "string"
                 }
             },
             "type": "object"
         },
         "NotifierType": {
-            "description": "placeholder",
-            "properties": {},
-            "type": "object"
+            "enum": [
+                "EMAIL",
+                "HTTP"
+            ],
+            "type": "string"
         },
         "Organization": {
             "properties": {
@@ -842,21 +947,47 @@
                         "NON_PROFIT",
                         "CORPORATE",
                         "K12"
-                    ]
+                    ],
+                    "type": "string"
                 },
                 "zip": {"type": "string"}
             },
             "type": "object"
         },
         "OrganizationParameter": {
-            "description": "placeholder",
-            "properties": {},
-            "type": "object"
+            "enum": [
+                "aliases",
+                "city",
+                "countryCode",
+                "emailDomains",
+                "id",
+                "ips",
+                "lenientNameMatch",
+                "matchName",
+                "name",
+                "phone",
+                "source",
+                "stateCode",
+                "street",
+                "street2",
+                "tags",
+                "type",
+                "zip"
+            ],
+            "type": "string"
         },
         "OrganizationType": {
-            "description": "placeholder",
-            "properties": {},
-            "type": "object"
+            "enum": [
+                "CORPORATE",
+                "FIRST_RESPONDER",
+                "K12",
+                "MEDICAL",
+                "MEMBERSHIP",
+                "MILITARY",
+                "NON_PROFIT",
+                "UNIVERSITY"
+            ],
+            "type": "string"
         },
         "Person": {
             "properties": {"fields": {"type": "string"}},
@@ -905,7 +1036,8 @@
                         "REPORTING",
                         "COMPLETE",
                         "ERROR"
-                    ]
+                    ],
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -926,9 +1058,13 @@
             "type": "object"
         },
         "ReportStatus": {
-            "description": "placeholder",
-            "properties": {},
-            "type": "object"
+            "enum": [
+                "COMPLETE",
+                "CREATED",
+                "ERROR",
+                "REPORTING"
+            ],
+            "type": "string"
         },
         "ResultWrapper": {
             "properties": {"result": {"type": "boolean"}},
@@ -1000,14 +1136,24 @@
             "type": "object"
         },
         "Symbology": {
-            "description": "placeholder",
-            "properties": {},
-            "type": "object"
+            "enum": [
+                "CODE_128",
+                "ITF",
+                "PDF147",
+                "QR",
+                "UPC_A"
+            ],
+            "type": "string"
         },
         "TaskStatus": {
-            "description": "placeholder",
-            "properties": {},
-            "type": "object"
+            "enum": [
+                "COMPLETED",
+                "ESCALATED",
+                "IN_PROGRESS",
+                "ON_HOLD",
+                "PENDING"
+            ],
+            "type": "string"
         },
         "ThinOrganization": {
             "properties": {
@@ -1037,9 +1183,12 @@
             "type": "object"
         },
         "TokenState": {
-            "description": "placeholder",
-            "properties": {},
-            "type": "object"
+            "enum": [
+                "ACTIVE",
+                "EXPIRED",
+                "USED"
+            ],
+            "type": "string"
         },
         "URLReference": {
             "properties": {
@@ -1094,9 +1243,20 @@
             "type": "object"
         },
         "UserRole": {
-            "description": "placeholder",
-            "properties": {},
-            "type": "object"
+            "enum": [
+                "CUSTOMER_SERVICE",
+                "ORGANIZATION_MANAGER",
+                "PROMOTION_MANAGER",
+                "REPORTER",
+                "RESOURCE_MANAGER",
+                "REVIEWER",
+                "REVIEWER_MANAGER",
+                "REVIEW_REPORTER",
+                "REWARD_ADMIN",
+                "TEMPLATE_ADMIN",
+                "USER_ADMIN"
+            ],
+            "type": "string"
         },
         "VerificationError": {
             "description": "placeholder",
@@ -1114,13 +1274,19 @@
                     "type": "boolean"
                 },
                 "assetMap": {"type": "string"},
-                "config": {"$ref": "#/definitions/VerificationRequestConfig"},
+                "config": {
+                    "$ref": "#/definitions/VerificationRequestConfig",
+                    "type": "string"
+                },
                 "expirationDate": {
                     "format": "long",
                     "type": "number"
                 },
                 "metadata": {"type": "string"},
-                "organization": {"$ref": "#/definitions/Organization"},
+                "organization": {
+                    "$ref": "#/definitions/Organization",
+                    "type": "string"
+                },
                 "personId": {"type": "string"},
                 "revisions": {
                     "format": "integer",
@@ -1201,7 +1367,10 @@
                     "type": "array"
                 },
                 "consolationRewardIds": {"type": "string"},
-                "locale": {"$ref": "#/definitions/Locale"},
+                "locale": {
+                    "$ref": "#/definitions/Locale",
+                    "type": "string"
+                },
                 "metadata": {
                     "description": "Shim to return VerificationModel logic name in metadata when overridden so that it does not get reverted on template update",
                     "type": "string"
@@ -1231,7 +1400,10 @@
                     "format": "long",
                     "type": "number"
                 },
-                "config": {"$ref": "#/definitions/VerificationRequestConfig"},
+                "config": {
+                    "$ref": "#/definitions/VerificationRequestConfig",
+                    "type": "string"
+                },
                 "created": {
                     "format": "long",
                     "type": "number"
@@ -1261,7 +1433,10 @@
                     "type": "array"
                 },
                 "metadata": {"type": "string"},
-                "request": {"$ref": "#/definitions/VerificationRequest"},
+                "request": {
+                    "$ref": "#/definitions/VerificationRequest",
+                    "type": "string"
+                },
                 "requestId": {"type": "string"},
                 "result": {
                     "enum": [
@@ -1278,7 +1453,8 @@
                         "OPEN",
                         "PENDING",
                         "COMPLETE"
-                    ]
+                    ],
+                    "type": "string"
                 },
                 "timestamp": {
                     "format": "long",
@@ -1288,24 +1464,46 @@
             "type": "object"
         },
         "VerificationResponseResultCode": {
-            "description": "placeholder",
-            "properties": {},
-            "type": "object"
+            "enum": [
+                "APPROVED",
+                "DISAPPROVED",
+                "EXPIRED",
+                "INCONCLUSIVE",
+                "INSUFFICIENT_DATA",
+                "NOT_APPROVED",
+                "REVOKED",
+                "VERIFICATION_SOURCE_UNAVAILABLE"
+            ],
+            "type": "string"
         },
         "VerificationResult": {
-            "description": "placeholder",
-            "properties": {},
-            "type": "object"
+            "enum": [
+                "FALSE",
+                "TRUE",
+                "UNKNOWN"
+            ],
+            "type": "string"
         },
         "VerificationStatus": {
-            "description": "placeholder",
-            "properties": {},
-            "type": "object"
+            "enum": [
+                "COMPLETE",
+                "NEW",
+                "OPEN",
+                "PENDING"
+            ],
+            "type": "string"
         },
         "VerificationType": {
-            "description": "placeholder",
-            "properties": {},
-            "type": "object"
+            "enum": [
+                "ASSET_REVIEW",
+                "AUTHORITATIVE",
+                "EMAIL_LOOP",
+                "HONOR_SYSTEM",
+                "IP_ADDRESS",
+                "SSO",
+                "VALIDATION"
+            ],
+            "type": "string"
         },
         "VerificationUserResponse": {
             "properties": {"type": {"type": "string"}},
@@ -1327,9 +1525,17 @@
         },
         "VerificationUserResponseUploadToken": {
             "properties": {
-                "data": {"$ref": "#/definitions/Token"},
+                "data": {
+                    "$ref": "#/definitions/Token",
+                    "type": "string"
+                },
                 "type": {"type": "string"}
             },
+            "type": "object"
+        },
+        "certificationresponsefromrequestid": {
+            "description": "placeholder",
+            "properties": {},
             "type": "object"
         },
         "dummy": {
@@ -1468,6 +1674,7 @@
             "description": "Obtain a list of affiliation types, optionally filtered by organization type.",
             "operationId": "listAffiliationTypes",
             "parameters": [{
+                "$ref": "#/definitions/OrganizationType",
                 "description": "an organization type, as described by [List Organization Types](#!/OrganizationType/listOrganizationTypes)",
                 "enum": [
                     "CORPORATE",
@@ -1482,7 +1689,7 @@
                 "in": "query",
                 "name": "organizationType",
                 "required": false,
-                "schema": {"$ref": "#/definitions/OrganizationType"}
+                "type": "string"
             }],
             "produces": ["application/json"],
             "responses": {"200": {
@@ -1617,6 +1824,7 @@
             "description": "Get the counts of available tasks, grouped by Locale",
             "operationId": "countTasksByLocale",
             "parameters": [{
+                "$ref": "#/definitions/TaskStatus",
                 "default": "PENDING",
                 "description": "",
                 "enum": [
@@ -1629,7 +1837,7 @@
                 "in": "query",
                 "name": "status",
                 "required": false,
-                "schema": {"$ref": "#/definitions/TaskStatus"}
+                "type": "string"
             }],
             "produces": ["application/json"],
             "responses": {"200": {
@@ -1644,6 +1852,7 @@
             "description": "Get the counts of available tasks, grouped by Organization Type",
             "operationId": "countTasksByOrganizationType",
             "parameters": [{
+                "$ref": "#/definitions/TaskStatus",
                 "default": "PENDING",
                 "description": "",
                 "enum": [
@@ -1656,7 +1865,7 @@
                 "in": "query",
                 "name": "status",
                 "required": false,
-                "schema": {"$ref": "#/definitions/TaskStatus"}
+                "type": "string"
             }],
             "produces": ["application/json"],
             "responses": {"200": {
@@ -1671,6 +1880,7 @@
             "description": "Get the counts of available tasks, grouped by priority",
             "operationId": "countTasksByPriority",
             "parameters": [{
+                "$ref": "#/definitions/TaskStatus",
                 "default": "PENDING",
                 "description": "",
                 "enum": [
@@ -1683,7 +1893,7 @@
                 "in": "query",
                 "name": "status",
                 "required": false,
-                "schema": {"$ref": "#/definitions/TaskStatus"}
+                "type": "string"
             }],
             "produces": ["application/json"],
             "responses": {"200": {
@@ -1890,6 +2100,7 @@
                     "type": "string"
                 },
                 {
+                    "$ref": "#/definitions/AssetType",
                     "description": "the type of asset that has been uploaded",
                     "enum": [
                         "ACCEPTANCE_LETTER",
@@ -1922,7 +2133,7 @@
                     "in": "query",
                     "name": "assetType",
                     "required": false,
-                    "schema": {"$ref": "#/definitions/AssetType"}
+                    "type": "string"
                 }
             ],
             "produces": [],
@@ -1938,6 +2149,7 @@
             "description": "Obtain a list of asset types.",
             "operationId": "listAssetTypes",
             "parameters": [{
+                "$ref": "#/definitions/OrganizationType",
                 "description": "",
                 "enum": [
                     "CORPORATE",
@@ -1952,7 +2164,7 @@
                 "in": "query",
                 "name": "organizationType",
                 "required": false,
-                "schema": {"$ref": "#/definitions/OrganizationType"}
+                "type": "string"
             }],
             "produces": ["application/json"],
             "responses": {"200": {
@@ -1969,10 +2181,18 @@
             "parameters": [
                 {
                     "description": "a supported barcode symbology",
+                    "enum": [
+                        "CODE_128",
+                        "ITF",
+                        "PDF147",
+                        "QR",
+                        "UPC_A"
+                    ],
                     "in": "path",
                     "name": "symbology",
                     "required": true,
-                    "schema": {"$ref": "#/definitions/Symbology"}
+                    "schema": {"$ref": "#/definitions/Symbology"},
+                    "type": "string"
                 },
                 {
                     "description": "numeric or textual data that is appropriate to be represented in the given symbology",
@@ -2058,7 +2278,8 @@
                 "in": "path",
                 "name": "requestId",
                 "required": true,
-                "schema": {"$ref": "#/definitions/certificationresponsefromrequestid"}
+                "schema": {"$ref": "#/definitions/certificationresponsefromrequestid"},
+                "type": "string"
             }],
             "produces": ["application/json"],
             "responses": {"200": {
@@ -2245,7 +2466,7 @@
                         "type": "string"
                     },
                     {
-                        "description": "an organization type (see [List Organization Types](#!/OrganizationType/listOrganizationTypes)) to help when matching the organization name.  If `organizationId` is supplied or `organizationName` is not supplied, this parameter is ignored.\n\nPossible values: `UNIVERSITY`, `MEMBERSHIP`, `MILITARY`, `FIRST_RESPONDER`, `MEDICAL`, `NON_PROFIT`, `CORPORATE`, `K12`",
+                        "description": "an organization type (see [List Organization Types](#!/OrganizationType/listOrganizationTypes)) to help when matching the organization name.  If `organizationId` is supplied or `organizationName` is not supplied, this parameter is ignored.",
                         "enum": [
                             "CORPORATE",
                             "FIRST_RESPONDER",
@@ -2366,35 +2587,37 @@
                         "type": "string"
                     },
                     {
-                        "description": "a EMAIL",
+                        "description": "An email address, preferably the one issued by the organization being verified",
                         "in": "formData",
                         "name": "EMAIL",
                         "required": false,
                         "type": "string"
                     },
                     {
-                        "description": "a FIRST_NAME",
+                        "description": "Given name of the verification subject",
                         "in": "formData",
                         "name": "FIRST_NAME",
                         "required": false,
                         "type": "string"
                     },
                     {
-                        "description": "a LAST_NAME",
+                        "description": "Surname/family name of the verification subject",
                         "in": "formData",
                         "name": "LAST_NAME",
                         "required": false,
                         "type": "string"
                     },
                     {
-                        "description": "a BIRTH_DATE",
+                        "description": "Complete birth date of the verification subject",
+                        "format": "date",
                         "in": "formData",
                         "name": "BIRTH_DATE",
                         "required": false,
                         "type": "string"
                     },
                     {
-                        "description": "a STATUS_START_DATE",
+                        "description": "The date on which the affiliation being verified began. For VETERAN, this is the date of discharge/end of active duty status.",
+                        "format": "date",
                         "in": "formData",
                         "name": "STATUS_START_DATE",
                         "required": false,
@@ -2453,35 +2676,37 @@
                     "type": "string"
                 },
                 {
-                    "description": "a EMAIL",
+                    "description": "An email address, preferably the one issued by the organization being verified",
                     "in": "formData",
                     "name": "EMAIL",
                     "required": false,
                     "type": "string"
                 },
                 {
-                    "description": "a FIRST_NAME",
+                    "description": "Given name of the verification subject",
                     "in": "formData",
                     "name": "FIRST_NAME",
                     "required": false,
                     "type": "string"
                 },
                 {
-                    "description": "a LAST_NAME",
+                    "description": "Surname/family name of the verification subject",
                     "in": "formData",
                     "name": "LAST_NAME",
                     "required": false,
                     "type": "string"
                 },
                 {
-                    "description": "a BIRTH_DATE",
+                    "description": "Complete birth date of the verification subject",
+                    "format": "date",
                     "in": "formData",
                     "name": "BIRTH_DATE",
                     "required": false,
                     "type": "string"
                 },
                 {
-                    "description": "a STATUS_START_DATE",
+                    "description": "The date on which the affiliation being verified began. For VETERAN, this is the date of discharge/end of active duty status.",
+                    "format": "date",
                     "in": "formData",
                     "name": "STATUS_START_DATE",
                     "required": false,
@@ -2538,7 +2763,7 @@
                     "type": "string"
                 },
                 {
-                    "description": "a date upon which this entry is no longer valid (format: `yyyy-MM-dd`)",
+                    "description": "a date upon which this entry is no longer valid",
                     "format": "date",
                     "in": "formData",
                     "name": "expirationDate",
@@ -2676,6 +2901,7 @@
                         "type": "string"
                     },
                     {
+                        "$ref": "#/definitions/NotifierType",
                         "description": "a type of either HTTP or EMAIL",
                         "enum": [
                             "EMAIL",
@@ -2684,7 +2910,7 @@
                         "in": "query",
                         "name": "type",
                         "required": false,
-                        "schema": {"$ref": "#/definitions/NotifierType"}
+                        "type": "string"
                     }
                 ],
                 "produces": ["application/json"],
@@ -2766,7 +2992,8 @@
                     "in": "path",
                     "name": "eventTypeName",
                     "required": true,
-                    "schema": {"$ref": "#/definitions/EventType"}
+                    "schema": {"$ref": "#/definitions/EventType"},
+                    "type": "string"
                 }
             ],
             "produces": [],
@@ -2988,12 +3215,13 @@
             "operationId": "listOrganizations",
             "parameters": [
                 {
+                    "$ref": "#/definitions/OrganizationType",
                     "collectionFormat": "multi",
                     "description": "an organization type reference, as described by [List Organization Types](#!/OrganizationType/listOrganizationTypes)",
                     "in": "query",
+                    "items": {"type": "string"},
                     "name": "type",
                     "required": false,
-                    "schema": {"$ref": "#/definitions/OrganizationType"},
                     "type": "array"
                 },
                 {
@@ -3097,12 +3325,13 @@
             "operationId": "typeahead",
             "parameters": [
                 {
+                    "$ref": "#/definitions/OrganizationType",
                     "collectionFormat": "multi",
                     "description": "an organization type reference, as described by [List Organization Types](#!/OrganizationType/listOrganizationTypes)",
                     "in": "query",
+                    "items": {"type": "string"},
                     "name": "type",
                     "required": false,
-                    "schema": {"$ref": "#/definitions/OrganizationType"},
                     "type": "array"
                 },
                 {
@@ -3249,7 +3478,7 @@
                 "operationId": "requestReport",
                 "parameters": [
                     {
-                        "description": "an optional lower bound on request timestamp (format: `yyyy-MM-dd`)",
+                        "description": "an optional lower bound on request timestamp",
                         "format": "date",
                         "in": "formData",
                         "name": "startDate",
@@ -3257,7 +3486,7 @@
                         "type": "string"
                     },
                     {
-                        "description": "an optional upper bound on request timestamp (format: `yyyy-MM-dd`)",
+                        "description": "an optional upper bound on request timestamp",
                         "format": "date",
                         "in": "formData",
                         "name": "endDate",
@@ -3365,7 +3594,7 @@
                     "type": "string"
                 },
                 {
-                    "description": "The date/time for the beginning of the report period (format: `yyyy-MM-dd`)",
+                    "description": "The date/time for the beginning of the report period",
                     "format": "date",
                     "in": "formData",
                     "name": "startDate",
@@ -3373,7 +3602,7 @@
                     "type": "string"
                 },
                 {
-                    "description": "The date/time for the end of the report period (format: `yyyy-MM-dd`)",
+                    "description": "The date/time for the end of the report period",
                     "format": "date",
                     "in": "formData",
                     "name": "endDate",
@@ -3453,12 +3682,13 @@
             "description": "Obtain a map of required fields for the specified VerificationTypes.\n If multiple VerificationTypes are specified the list is the union of the individual results.",
             "operationId": "listFields",
             "parameters": [{
+                "$ref": "#/definitions/VerificationType",
                 "collectionFormat": "multi",
                 "description": "",
                 "in": "query",
+                "items": {"type": "string"},
                 "name": "verificationTypes",
                 "required": false,
-                "schema": {"$ref": "#/definitions/VerificationType"},
                 "type": "array"
             }],
             "produces": ["application/json"],
@@ -3824,6 +4054,7 @@
                     "type": "string"
                 },
                 {
+                    "collectionFormat": "multi",
                     "description": "A comma-delimited list of affiliation type names (see [List Affiliation Types](#!/AffiliationType/listAffiliationTypes)). Defines the affiliations the requestor deems acceptable for a given verification. (For example, when attempting to verify that an individual is either a full-time or part-time student: `_affiliationTypes=STUDENT_FULL_TIME,STUDENT_PART_TIME`",
                     "enum": [
                         "ACTIVE_DUTY",
@@ -3854,11 +4085,13 @@
                         "VETERAN"
                     ],
                     "in": "formData",
+                    "items": {"type": "string"},
                     "name": "_affiliationTypes",
                     "required": false,
-                    "type": "string"
+                    "type": "array"
                 },
                 {
+                    "collectionFormat": "multi",
                     "description": "A comma-delimited list of verification type names (see [List Verification Types](#!/VerificationType/listVerificationTypes)). Defines the requestor's list of acceptable techniques that may be used to verify an individual.",
                     "enum": [
                         "ASSET_REVIEW",
@@ -3870,11 +4103,13 @@
                         "VALIDATION"
                     ],
                     "in": "formData",
+                    "items": {"type": "string"},
                     "name": "_verificationTypes",
                     "required": false,
-                    "type": "string"
+                    "type": "array"
                 },
                 {
+                    "collectionFormat": "multi",
                     "description": "A comma-delimited list of asset type names (see [List Asset Types](#!/AssetType/listAssetTypes)). Defines the requestor's list of acceptable documents for use with `ASSET_REVIEW` verification types.  If `ASSET_REVIEW` is not an allowable verification type, this configuration is ignored.",
                     "enum": [
                         "ACCEPTANCE_LETTER",
@@ -3905,19 +4140,22 @@
                         "VENDOR_STATEMENT"
                     ],
                     "in": "formData",
+                    "items": {"type": "string"},
                     "name": "_assetTypes",
                     "required": false,
-                    "type": "string"
+                    "type": "array"
                 },
                 {
+                    "collectionFormat": "multi",
                     "description": "A comma-delimited list of Reward IDs (see [List Rewards](#!/Reward/listRewards)). Defines any rewards to be issued when an individual is verified.",
                     "in": "formData",
+                    "items": {"type": "string"},
                     "name": "_rewardIds",
                     "required": false,
-                    "type": "string"
+                    "type": "array"
                 },
                 {
-                    "description": "an optional beginning date for this template (format: `yyyy-MM-dd`)",
+                    "description": "an optional beginning date for this template",
                     "format": "date",
                     "in": "formData",
                     "name": "begins",
@@ -3925,7 +4163,7 @@
                     "type": "string"
                 },
                 {
-                    "description": "an optional expiration date for this template (format: `yyyy-MM-dd`)",
+                    "description": "an optional expiration date for this template",
                     "format": "date",
                     "in": "formData",
                     "name": "expires",
@@ -4075,6 +4313,7 @@
                         "type": "string"
                     },
                     {
+                        "collectionFormat": "multi",
                         "description": "A comma-delimited list of affiliation type names (see [List Affiliation Types](#!/AffiliationType/listAffiliationTypes)). Defines the affiliations the requestor deems acceptable for a given verification. (For example, when attempting to verify that an individual is either a full-time or part-time student: `_affiliationTypes=STUDENT_FULL_TIME,STUDENT_PART_TIME`",
                         "enum": [
                             "ACTIVE_DUTY",
@@ -4105,11 +4344,13 @@
                             "VETERAN"
                         ],
                         "in": "formData",
+                        "items": {"type": "string"},
                         "name": "_affiliationTypes",
                         "required": false,
-                        "type": "string"
+                        "type": "array"
                     },
                     {
+                        "collectionFormat": "multi",
                         "description": "A comma-delimited list of verification type names (see [List Verification Types](#!/VerificationType/listVerificationTypes)). Defines the requestor's list of acceptable techniques that may be used to verify an individual.",
                         "enum": [
                             "ASSET_REVIEW",
@@ -4121,11 +4362,13 @@
                             "VALIDATION"
                         ],
                         "in": "formData",
+                        "items": {"type": "string"},
                         "name": "_verificationTypes",
                         "required": false,
-                        "type": "string"
+                        "type": "array"
                     },
                     {
+                        "collectionFormat": "multi",
                         "description": "A comma-delimited list of asset type names (see [List Asset Types](#!/AssetType/listAssetTypes)). Defines the requestor's list of acceptable documents for use with `ASSET_REVIEW` verification types.  If `ASSET_REVIEW` is not an allowable verification type, this configuration is ignored.",
                         "enum": [
                             "ACCEPTANCE_LETTER",
@@ -4156,19 +4399,22 @@
                             "VENDOR_STATEMENT"
                         ],
                         "in": "formData",
+                        "items": {"type": "string"},
                         "name": "_assetTypes",
                         "required": false,
-                        "type": "string"
+                        "type": "array"
                     },
                     {
+                        "collectionFormat": "multi",
                         "description": "A comma-delimited list of Reward IDs (see [List Rewards](#!/Reward/listRewards)). Defines any rewards to be issued when an individual is verified.",
                         "in": "formData",
+                        "items": {"type": "string"},
                         "name": "_rewardIds",
                         "required": false,
-                        "type": "string"
+                        "type": "array"
                     },
                     {
-                        "description": "an optional beginning date for this template (format: `yyyy-MM-dd`)",
+                        "description": "an optional beginning date for this template",
                         "format": "date",
                         "in": "formData",
                         "name": "begins",
@@ -4176,7 +4422,7 @@
                         "type": "string"
                     },
                     {
-                        "description": "an optional expiration date for this template (format: `yyyy-MM-dd`)",
+                        "description": "an optional expiration date for this template",
                         "format": "date",
                         "in": "formData",
                         "name": "expires",
@@ -4594,7 +4840,8 @@
                         "in": "path",
                         "name": "role",
                         "required": true,
-                        "schema": {"$ref": "#/definitions/UserRole"}
+                        "schema": {"$ref": "#/definitions/UserRole"},
+                        "type": "string"
                     }
                 ],
                 "produces": ["application/json"],
@@ -4635,7 +4882,8 @@
                         "in": "path",
                         "name": "role",
                         "required": true,
-                        "schema": {"$ref": "#/definitions/UserRole"}
+                        "schema": {"$ref": "#/definitions/UserRole"},
+                        "type": "string"
                     }
                 ],
                 "produces": ["application/json"],
@@ -4661,35 +4909,37 @@
                         "type": "string"
                     },
                     {
-                        "description": "a EMAIL",
+                        "description": "An email address, preferably the one issued by the organization being verified",
                         "in": "query",
                         "name": "EMAIL",
                         "required": false,
                         "type": "string"
                     },
                     {
-                        "description": "a FIRST_NAME",
+                        "description": "Given name of the verification subject",
                         "in": "query",
                         "name": "FIRST_NAME",
                         "required": false,
                         "type": "string"
                     },
                     {
-                        "description": "a LAST_NAME",
+                        "description": "Surname/family name of the verification subject",
                         "in": "query",
                         "name": "LAST_NAME",
                         "required": false,
                         "type": "string"
                     },
                     {
-                        "description": "a BIRTH_DATE",
+                        "description": "Complete birth date of the verification subject",
+                        "format": "date",
                         "in": "query",
                         "name": "BIRTH_DATE",
                         "required": false,
                         "type": "string"
                     },
                     {
-                        "description": "a STATUS_START_DATE",
+                        "description": "The date on which the affiliation being verified began. For VETERAN, this is the date of discharge/end of active duty status.",
+                        "format": "date",
                         "in": "query",
                         "name": "STATUS_START_DATE",
                         "required": false,
@@ -4711,7 +4961,8 @@
                         "type": "string"
                     },
                     {
-                        "description": "an organization type (see [List Organization Types](#!/OrganizationType/listOrganizationTypes)) to help when matching the organization name.  If `organizationId` is supplied or `organizationName` is not supplied, this parameter is ignored.\n\nPossible values: `UNIVERSITY`, `MEMBERSHIP`, `MILITARY`, `FIRST_RESPONDER`, `MEDICAL`, `NON_PROFIT`, `CORPORATE`, `K12`",
+                        "$ref": "#/definitions/OrganizationType",
+                        "description": "an organization type (see [List Organization Types](#!/OrganizationType/listOrganizationTypes)) to help when matching the organization name.  If `organizationId` is supplied or `organizationName` is not supplied, this parameter is ignored.",
                         "enum": [
                             "CORPORATE",
                             "FIRST_RESPONDER",
@@ -4725,7 +4976,7 @@
                         "in": "query",
                         "name": "organizationType",
                         "required": false,
-                        "schema": {"$ref": "#/definitions/OrganizationType"}
+                        "type": "string"
                     },
                     {
                         "default": "true",
@@ -4736,6 +4987,8 @@
                         "type": "boolean"
                     },
                     {
+                        "$ref": "#/definitions/AffiliationType",
+                        "collectionFormat": "multi",
                         "description": "A comma-delimited list of affiliation type names (see [List Affiliation Types](#!/AffiliationType/listAffiliationTypes)). Defines the affiliations the requestor deems acceptable for a given verification. (For example, when attempting to verify that an individual is either a full-time or part-time student: `_affiliationTypes=STUDENT_FULL_TIME,STUDENT_PART_TIME`",
                         "enum": [
                             "ACTIVE_DUTY",
@@ -4766,11 +5019,14 @@
                             "VETERAN"
                         ],
                         "in": "query",
+                        "items": {"type": "string"},
                         "name": "_affiliationTypes",
                         "required": false,
-                        "schema": {"$ref": "#/definitions/AffiliationType"}
+                        "type": "array"
                     },
                     {
+                        "$ref": "#/definitions/VerificationType",
+                        "collectionFormat": "multi",
                         "description": "A comma-delimited list of verification type names (see [List Verification Types](#!/VerificationType/listVerificationTypes)). Defines the requestor's list of acceptable techniques that may be used to verify an individual.",
                         "enum": [
                             "ASSET_REVIEW",
@@ -4782,11 +5038,14 @@
                             "VALIDATION"
                         ],
                         "in": "query",
+                        "items": {"type": "string"},
                         "name": "_verificationTypes",
                         "required": false,
-                        "schema": {"$ref": "#/definitions/VerificationType"}
+                        "type": "array"
                     },
                     {
+                        "$ref": "#/definitions/AssetType",
+                        "collectionFormat": "multi",
                         "description": "A comma-delimited list of asset type names (see [List Asset Types](#!/AssetType/listAssetTypes)). Defines the requestor's list of acceptable documents for use with `ASSET_REVIEW` verification types.  If `ASSET_REVIEW` is not an allowable verification type, this configuration is ignored.",
                         "enum": [
                             "ACCEPTANCE_LETTER",
@@ -4817,16 +5076,19 @@
                             "VENDOR_STATEMENT"
                         ],
                         "in": "query",
+                        "items": {"type": "string"},
                         "name": "_assetTypes",
                         "required": false,
-                        "schema": {"$ref": "#/definitions/AssetType"}
+                        "type": "array"
                     },
                     {
+                        "collectionFormat": "multi",
                         "description": "A comma-delimited list of Reward IDs (see [List Rewards](#!/Reward/listRewards)). Defines any rewards to be issued when an individual is verified.",
                         "in": "query",
+                        "items": {"type": "string"},
                         "name": "_rewardIds",
                         "required": false,
-                        "type": "string"
+                        "type": "array"
                     },
                     {
                         "description": "metadata value for the supplied key (ex: `:orderId=179365`)",
@@ -4850,35 +5112,37 @@
                 "operationId": "verify",
                 "parameters": [
                     {
-                        "description": "a EMAIL",
+                        "description": "An email address, preferably the one issued by the organization being verified",
                         "in": "formData",
                         "name": "EMAIL",
                         "required": false,
                         "type": "string"
                     },
                     {
-                        "description": "a FIRST_NAME",
+                        "description": "Given name of the verification subject",
                         "in": "formData",
                         "name": "FIRST_NAME",
                         "required": false,
                         "type": "string"
                     },
                     {
-                        "description": "a LAST_NAME",
+                        "description": "Surname/family name of the verification subject",
                         "in": "formData",
                         "name": "LAST_NAME",
                         "required": false,
                         "type": "string"
                     },
                     {
-                        "description": "a BIRTH_DATE",
+                        "description": "Complete birth date of the verification subject",
+                        "format": "date",
                         "in": "formData",
                         "name": "BIRTH_DATE",
                         "required": false,
                         "type": "string"
                     },
                     {
-                        "description": "a STATUS_START_DATE",
+                        "description": "The date on which the affiliation being verified began. For VETERAN, this is the date of discharge/end of active duty status.",
+                        "format": "date",
                         "in": "formData",
                         "name": "STATUS_START_DATE",
                         "required": false,
@@ -4900,7 +5164,7 @@
                         "type": "string"
                     },
                     {
-                        "description": "an organization type (see [List Organization Types](#!/OrganizationType/listOrganizationTypes)) to help when matching the organization name.  If `organizationId` is supplied or `organizationName` is not supplied, this parameter is ignored.\n\nPossible values: `UNIVERSITY`, `MEMBERSHIP`, `MILITARY`, `FIRST_RESPONDER`, `MEDICAL`, `NON_PROFIT`, `CORPORATE`, `K12`",
+                        "description": "an organization type (see [List Organization Types](#!/OrganizationType/listOrganizationTypes)) to help when matching the organization name.  If `organizationId` is supplied or `organizationName` is not supplied, this parameter is ignored.",
                         "enum": [
                             "CORPORATE",
                             "FIRST_RESPONDER",
@@ -4925,6 +5189,7 @@
                         "type": "boolean"
                     },
                     {
+                        "collectionFormat": "multi",
                         "description": "A comma-delimited list of affiliation type names (see [List Affiliation Types](#!/AffiliationType/listAffiliationTypes)). Defines the affiliations the requestor deems acceptable for a given verification. (For example, when attempting to verify that an individual is either a full-time or part-time student: `_affiliationTypes=STUDENT_FULL_TIME,STUDENT_PART_TIME`",
                         "enum": [
                             "ACTIVE_DUTY",
@@ -4955,11 +5220,13 @@
                             "VETERAN"
                         ],
                         "in": "formData",
+                        "items": {"type": "string"},
                         "name": "_affiliationTypes",
                         "required": false,
-                        "type": "string"
+                        "type": "array"
                     },
                     {
+                        "collectionFormat": "multi",
                         "description": "A comma-delimited list of verification type names (see [List Verification Types](#!/VerificationType/listVerificationTypes)). Defines the requestor's list of acceptable techniques that may be used to verify an individual.",
                         "enum": [
                             "ASSET_REVIEW",
@@ -4971,11 +5238,13 @@
                             "VALIDATION"
                         ],
                         "in": "formData",
+                        "items": {"type": "string"},
                         "name": "_verificationTypes",
                         "required": false,
-                        "type": "string"
+                        "type": "array"
                     },
                     {
+                        "collectionFormat": "multi",
                         "description": "A comma-delimited list of asset type names (see [List Asset Types](#!/AssetType/listAssetTypes)). Defines the requestor's list of acceptable documents for use with `ASSET_REVIEW` verification types.  If `ASSET_REVIEW` is not an allowable verification type, this configuration is ignored.",
                         "enum": [
                             "ACCEPTANCE_LETTER",
@@ -5006,16 +5275,19 @@
                             "VENDOR_STATEMENT"
                         ],
                         "in": "formData",
+                        "items": {"type": "string"},
                         "name": "_assetTypes",
                         "required": false,
-                        "type": "string"
+                        "type": "array"
                     },
                     {
+                        "collectionFormat": "multi",
                         "description": "A comma-delimited list of Reward IDs (see [List Rewards](#!/Reward/listRewards)). Defines any rewards to be issued when an individual is verified.",
                         "in": "formData",
+                        "items": {"type": "string"},
                         "name": "_rewardIds",
                         "required": false,
-                        "type": "string"
+                        "type": "array"
                     },
                     {
                         "description": "metadata value for the supplied key (ex: `:orderId=179365`)",
@@ -5061,35 +5333,37 @@
             "operationId": "search",
             "parameters": [
                 {
-                    "description": "a EMAIL",
+                    "description": "An email address, preferably the one issued by the organization being verified",
                     "in": "query",
                     "name": "EMAIL",
                     "required": false,
                     "type": "string"
                 },
                 {
-                    "description": "a FIRST_NAME",
+                    "description": "Given name of the verification subject",
                     "in": "query",
                     "name": "FIRST_NAME",
                     "required": false,
                     "type": "string"
                 },
                 {
-                    "description": "a LAST_NAME",
+                    "description": "Surname/family name of the verification subject",
                     "in": "query",
                     "name": "LAST_NAME",
                     "required": false,
                     "type": "string"
                 },
                 {
-                    "description": "a BIRTH_DATE",
+                    "description": "Complete birth date of the verification subject",
+                    "format": "date",
                     "in": "query",
                     "name": "BIRTH_DATE",
                     "required": false,
                     "type": "string"
                 },
                 {
-                    "description": "a STATUS_START_DATE",
+                    "description": "The date on which the affiliation being verified began. For VETERAN, this is the date of discharge/end of active duty status.",
+                    "format": "date",
                     "in": "query",
                     "name": "STATUS_START_DATE",
                     "required": false,
@@ -5221,35 +5495,37 @@
                         "type": "string"
                     },
                     {
-                        "description": "a EMAIL",
+                        "description": "An email address, preferably the one issued by the organization being verified",
                         "in": "formData",
                         "name": "EMAIL",
                         "required": false,
                         "type": "string"
                     },
                     {
-                        "description": "a FIRST_NAME",
+                        "description": "Given name of the verification subject",
                         "in": "formData",
                         "name": "FIRST_NAME",
                         "required": false,
                         "type": "string"
                     },
                     {
-                        "description": "a LAST_NAME",
+                        "description": "Surname/family name of the verification subject",
                         "in": "formData",
                         "name": "LAST_NAME",
                         "required": false,
                         "type": "string"
                     },
                     {
-                        "description": "a BIRTH_DATE",
+                        "description": "Complete birth date of the verification subject",
+                        "format": "date",
                         "in": "formData",
                         "name": "BIRTH_DATE",
                         "required": false,
                         "type": "string"
                     },
                     {
-                        "description": "a STATUS_START_DATE",
+                        "description": "The date on which the affiliation being verified began. For VETERAN, this is the date of discharge/end of active duty status.",
+                        "format": "date",
                         "in": "formData",
                         "name": "STATUS_START_DATE",
                         "required": false,
