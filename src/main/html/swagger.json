@@ -1233,7 +1233,8 @@
                         "MSHUP",
                         "ORGANIZATION_MANAGER",
                         "PROMOTION_MANAGER",
-                        "CUSTOMER_SERVICE"
+                        "CUSTOMER_SERVICE",
+                        "TRIAL_USER"
                     ],
                     "items": {"$ref": "#/definitions/UserRole"},
                     "type": "array"

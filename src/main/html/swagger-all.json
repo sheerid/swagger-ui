@@ -1233,7 +1233,8 @@
                         "MSHUP",
                         "ORGANIZATION_MANAGER",
                         "PROMOTION_MANAGER",
-                        "CUSTOMER_SERVICE"
+                        "CUSTOMER_SERVICE",
+                        "TRIAL_USER"
                     ],
                     "items": {"$ref": "#/definitions/UserRole"},
                     "type": "array"
@@ -2226,47 +2227,91 @@
             "summary": "Get Barcode",
             "tags": ["Barcode"]
         }},
-        "/certification": {"post": {
-            "consumes": ["application/x-www-form-urlencoded"],
-            "description": "Perform a certification request",
-            "operationId": "certify",
-            "parameters": [
-                {
-                    "default": "true",
-                    "description": "`true` to certify the attribute target, `false` otherwise (default: `true`)",
-                    "in": "formData",
-                    "name": "_certifyAttributeTarget",
-                    "required": false,
-                    "type": "boolean"
-                },
-                {
-                    "description": "fully-qualified identifier for the attribute being certified",
-                    "in": "formData",
-                    "name": "attribute.definition.identifier",
-                    "required": false,
-                    "type": "string"
-                },
-                {
-                    "description": "value for the specified attribute property",
-                    "in": "formData",
-                    "name": "attribute.property._{propertyName}_",
-                    "required": false,
-                    "type": "string"
-                },
-                {
-                    "description": "metadata value for the supplied key (ex: `:orderId=179365`)",
-                    "in": "formData",
-                    "name": "_metadata key (any string prefixed with `:`)_",
-                    "required": false,
-                    "type": "string"
-                }
-            ],
+        "/certification": {
+            "get": {
+                "consumes": [],
+                "description": "Attempts to locate one or more certification requests/responses supplying specific strict-matching criteria",
+                "operationId": "search",
+                "parameters": [
+                    {
+                        "description": "",
+                        "in": "query",
+                        "name": "accountId",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "default": "false",
+                        "description": "",
+                        "in": "query",
+                        "name": "includeRequests",
+                        "required": false,
+                        "type": "boolean"
+                    }
+                ],
+                "produces": ["application/json"],
+                "responses": {"200": {
+                    "description": "A list of [CertificationResponse](#!/definitions/CertificationResponse) objects",
+                    "schema": {"$ref": "#/definitions/CertificationResponse"}
+                }},
+                "summary": "Search",
+                "tags": ["Certification"]
+            },
+            "post": {
+                "consumes": ["application/x-www-form-urlencoded"],
+                "description": "Perform a certification request",
+                "operationId": "certify",
+                "parameters": [
+                    {
+                        "default": "true",
+                        "description": "`true` to certify the attribute target, `false` otherwise (default: `true`)",
+                        "in": "formData",
+                        "name": "_certifyAttributeTarget",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "description": "fully-qualified identifier for the attribute being certified",
+                        "in": "formData",
+                        "name": "attribute.definition.identifier",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "value for the specified attribute property",
+                        "in": "formData",
+                        "name": "attribute.property._{propertyName}_",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "description": "metadata value for the supplied key (ex: `:orderId=179365`)",
+                        "in": "formData",
+                        "name": "_metadata key (any string prefixed with `:`)_",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "produces": ["application/json"],
+                "responses": {"200": {
+                    "description": "A single [CertificationResponse](#!/definitions/CertificationResponse) object",
+                    "schema": {"$ref": "#/definitions/CertificationResponse"}
+                }},
+                "summary": "Certify",
+                "tags": ["Certification"]
+            }
+        },
+        "/certification/search": {"post": {
+            "consumes": [],
+            "description": "Attempts to locate one or more certification requests/responses supplying specific strict-matching criteria (using a JSON post rather than form fields)",
+            "operationId": "searchWithPost",
+            "parameters": [],
             "produces": ["application/json"],
             "responses": {"200": {
-                "description": "A single [CertificationResponse](#!/definitions/CertificationResponse) object",
+                "description": "A list of [CertificationResponse](#!/definitions/CertificationResponse) objects",
                 "schema": {"$ref": "#/definitions/CertificationResponse"}
             }},
-            "summary": "Certify",
+            "summary": "Search With Post",
             "tags": ["Certification"]
         }},
         "/certification/{requestId}": {"get": {
@@ -3547,7 +3592,7 @@
                     },
                     {
                         "collectionFormat": "multi",
-                        "description": "a ID of a template by which to filter requests. If none are specified, will not filter by template. If multiple template IDs are specified, will use OR combination to filter requests.",
+                        "description": "a ID of a template by which to filter requests. If none are specified, will not filter by template. If multiple template IDs are specified, will use OR combination to filter requests.  If template IDs are supplied, the automatic assumption will be that certifications should not be included in the results set, and will override the value of \"includeCertifications\"",
                         "in": "formData",
                         "items": {"type": "string"},
                         "name": "templateId",
@@ -3568,6 +3613,14 @@
                         "description": "filter results to just verification requests for which a fee is incurred",
                         "in": "formData",
                         "name": "invoiceMode",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "default": "false",
+                        "description": "include certifications in the verifications report",
+                        "in": "formData",
+                        "name": "includeCertifications",
                         "required": false,
                         "type": "boolean"
                     }
