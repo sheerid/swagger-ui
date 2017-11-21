@@ -1187,7 +1187,7 @@
             "enum": [
                 "CODE_128",
                 "ITF",
-                "PDF147",
+                "PDF417",
                 "QR",
                 "UPC_A"
             ],
@@ -2242,7 +2242,7 @@
                     "enum": [
                         "CODE_128",
                         "ITF",
-                        "PDF147",
+                        "PDF417",
                         "QR",
                         "UPC_A"
                     ],
@@ -2735,36 +2735,68 @@
                 "tags": ["Dataset"]
             }
         },
-        "/dataset/{datasetId}/entries": {"post": {
-            "consumes": ["text/csv"],
-            "description": "Create dataset entries with streaming approach",
-            "operationId": "createDatasetEntries",
-            "parameters": [
-                {
-                    "description": "the dataset id",
-                    "in": "path",
-                    "name": "datasetId",
-                    "required": true,
-                    "type": "string"
-                },
-                {
-                    "default": "1000",
-                    "description": "size of chunk to submit to service",
-                    "format": "integer",
-                    "in": "formData",
-                    "name": "chunkSize",
-                    "required": false,
-                    "type": "number"
-                }
-            ],
-            "produces": ["application/json"],
-            "responses": {"200": {
-                "description": "the number of entries created",
-                "schema": {"$ref": "#/definitions/dummy"}
-            }},
-            "summary": "Create Dataset Entries",
-            "tags": ["Dataset"]
-        }},
+        "/dataset/{datasetId}/entries": {
+            "post": {
+                "consumes": ["text/csv"],
+                "description": "Create dataset entries with streaming approach",
+                "operationId": "createDatasetEntries",
+                "parameters": [
+                    {
+                        "description": "the dataset id",
+                        "in": "path",
+                        "name": "datasetId",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "default": "1000",
+                        "description": "size of chunk to submit to service",
+                        "format": "integer",
+                        "in": "formData",
+                        "name": "chunkSize",
+                        "required": false,
+                        "type": "number"
+                    }
+                ],
+                "produces": ["application/json"],
+                "responses": {"200": {
+                    "description": "the number of entries created",
+                    "schema": {"$ref": "#/definitions/dummy"}
+                }},
+                "summary": "Create Dataset Entries",
+                "tags": ["Dataset"]
+            },
+            "put": {
+                "consumes": ["text/csv"],
+                "description": "Replace all dataset entries with new entries using a streaming approach",
+                "operationId": "replaceDatasetEntries",
+                "parameters": [
+                    {
+                        "description": "the dataset id",
+                        "in": "path",
+                        "name": "datasetId",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "default": "1000",
+                        "description": "size of chunk to submit to service",
+                        "format": "integer",
+                        "in": "formData",
+                        "name": "chunkSize",
+                        "required": false,
+                        "type": "number"
+                    }
+                ],
+                "produces": ["application/json"],
+                "responses": {"200": {
+                    "description": "the number of entries created",
+                    "schema": {"$ref": "#/definitions/dummy"}
+                }},
+                "summary": "Replace Dataset Entries",
+                "tags": ["Dataset"]
+            }
+        },
         "/dataset/{datasetId}/entry": {"post": {
             "consumes": ["application/x-www-form-urlencoded"],
             "description": "Add a single dataset entry",
