@@ -12,7 +12,10 @@
         },
         "Affiliation": {
             "properties": {
-                "attributes": {"type": "string"},
+                "attributes": {
+                    "items": {"type": "string"},
+                    "type": "array"
+                },
                 "end": {
                     "format": "long",
                     "type": "number"
@@ -272,7 +275,10 @@
                     "format": "integer",
                     "type": "number"
                 },
-                "bulkErrors": {"type": "object"},
+                "bulkErrors": {
+                    "items": {"type": "object"},
+                    "type": "array"
+                },
                 "bulkTaskStatus": {"type": "string"},
                 "created": {"type": "string"},
                 "type": {"type": "string"}
@@ -310,9 +316,15 @@
         },
         "CertificationRequestConfig": {
             "properties": {
-                "consolationRewardIds": {"type": "string"},
+                "consolationRewardIds": {
+                    "items": {"type": "string"},
+                    "type": "array"
+                },
                 "metadata": {"type": "string"},
-                "rewardIds": {"type": "string"}
+                "rewardIds": {
+                    "items": {"type": "string"},
+                    "type": "array"
+                }
             },
             "type": "object"
         },
@@ -355,7 +367,10 @@
         },
         "ChallengeQuestion": {
             "properties": {
-                "choices": {"type": "string"},
+                "choices": {
+                    "items": {"type": "string"},
+                    "type": "array"
+                },
                 "id": {"type": "string"},
                 "questionText": {"type": "string"}
             },
@@ -438,10 +453,16 @@
                     ],
                     "type": "string"
                 },
-                "fields": {"type": "string"},
+                "fields": {
+                    "items": {"type": "string"},
+                    "type": "array"
+                },
                 "id": {"type": "string"},
                 "name": {"type": "string"},
-                "orgParameters": {"type": "string"},
+                "orgParameters": {
+                    "items": {"type": "string"},
+                    "type": "array"
+                },
                 "organization": {
                     "$ref": "#/definitions/Organization",
                     "type": "string"
@@ -538,10 +559,16 @@
                     "format": "long",
                     "type": "number"
                 },
-                "fields": {"type": "string"},
+                "fields": {
+                    "items": {"type": "string"},
+                    "type": "array"
+                },
                 "id": {"type": "string"},
                 "name": {"type": "string"},
-                "orgParameters": {"type": "string"},
+                "orgParameters": {
+                    "items": {"type": "string"},
+                    "type": "array"
+                },
                 "organization": {
                     "$ref": "#/definitions/Organization",
                     "type": "string"
@@ -601,7 +628,10 @@
                 "required": {"type": "boolean"},
                 "type": {"type": "string"},
                 "value": {"type": "string"},
-                "values": {"type": "string"}
+                "values": {
+                    "items": {"type": "string"},
+                    "type": "array"
+                }
             },
             "type": "object"
         },
@@ -841,7 +871,10 @@
                     "type": "array"
                 },
                 "id": {"type": "string"},
-                "tags": {"type": "string"},
+                "tags": {
+                    "items": {"type": "string"},
+                    "type": "array"
+                },
                 "type": {"type": "string"}
             },
             "type": "object"
@@ -923,19 +956,31 @@
             "properties": {
                 "accountId": {"type": "string"},
                 "active": {"type": "boolean"},
-                "aliases": {"type": "string"},
+                "aliases": {
+                    "items": {"type": "string"},
+                    "type": "array"
+                },
                 "city": {"type": "string"},
                 "country": {"type": "string"},
-                "emailDomains": {"type": "string"},
+                "emailDomains": {
+                    "items": {"type": "string"},
+                    "type": "array"
+                },
                 "id": {
                     "format": "long",
                     "type": "number"
                 },
-                "ips": {"type": "string"},
+                "ips": {
+                    "items": {"type": "string"},
+                    "type": "array"
+                },
                 "name": {"type": "string"},
                 "state": {"type": "string"},
                 "street": {"type": "string"},
-                "tags": {"type": "string"},
+                "tags": {
+                    "items": {"type": "string"},
+                    "type": "array"
+                },
                 "type": {
                     "$ref": "#/definitions/OrganizationType",
                     "enum": [
@@ -1117,7 +1162,10 @@
         },
         "SearchResult": {
             "properties": {
-                "results": {"type": "string"},
+                "results": {
+                    "items": {"type": "object"},
+                    "type": "array"
+                },
                 "totalCount": {
                     "format": "integer",
                     "type": "number"
@@ -1367,7 +1415,10 @@
                     "items": {"$ref": "#/definitions/AssetType"},
                     "type": "array"
                 },
-                "consolationRewardIds": {"type": "string"},
+                "consolationRewardIds": {
+                    "items": {"type": "string"},
+                    "type": "array"
+                },
                 "locale": {
                     "$ref": "#/definitions/Locale",
                     "type": "string"
@@ -1376,8 +1427,14 @@
                     "description": "Shim to return VerificationModel logic name in metadata when overridden so that it does not get reverted on template update",
                     "type": "string"
                 },
-                "notifierIds": {"type": "string"},
-                "rewardIds": {"type": "string"},
+                "notifierIds": {
+                    "items": {"type": "string"},
+                    "type": "array"
+                },
+                "rewardIds": {
+                    "items": {"type": "string"},
+                    "type": "array"
+                },
                 "verificationTypes": {
                     "enum": [
                         "HONOR_SYSTEM",
