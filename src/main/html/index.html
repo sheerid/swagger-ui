@@ -102,8 +102,11 @@
              var apiKey = "myApiKeyXXXX123456789";
              $('#input_apiKey').val(apiKey);
              */
-
             window.swaggerUi.load();
+
+            $(window).bind('hashchange', function() {
+                window.Docs.shebang();
+            });
 
             function log() {
                 if ('console' in window) {
