@@ -1814,7 +1814,7 @@
                     "type": "string"
                 },
                 {
-                    "description": "an optional organization id, see [List Organizations](#!/Organization/listOrganizations)",
+                    "description": "an optional organization id, see [List Organizations](?url=swagger-all.json#!/Organization/listOrganizations)",
                     "format": "long",
                     "in": "formData",
                     "name": "organizationId",
@@ -1829,7 +1829,7 @@
                     "type": "string"
                 },
                 {
-                    "description": "an organization type (see [List Organization Types](#!/OrganizationType/listOrganizationTypes)) to help when matching the organization name.  If `organizationId` is supplied or `organizationName` is not supplied, this parameter is ignored.",
+                    "description": "an organization type (see [List Organization Types](?url=swagger-all.json#!/OrganizationType/listOrganizationTypes)) to help when matching the organization name.  If `organizationId` is supplied or `organizationName` is not supplied, this parameter is ignored.",
                     "enum": [
                         "CORPORATE",
                         "FIRST_RESPONDER",
@@ -1855,7 +1855,7 @@
                 },
                 {
                     "collectionFormat": "multi",
-                    "description": "A comma-delimited list of affiliation type names (see [List Affiliation Types](#!/AffiliationType/listAffiliationTypes)). Defines the affiliations the requestor deems acceptable for a given verification. (For example, when attempting to verify that an individual is either a full-time or part-time student: `_affiliationTypes=STUDENT_FULL_TIME,STUDENT_PART_TIME`",
+                    "description": "A comma-delimited list of affiliation type names (see [List Affiliation Types](?url=swagger-all.json#!/AffiliationType/listAffiliationTypes)). Defines the affiliations the requestor deems acceptable for a given verification. (For example, when attempting to verify that an individual is either a full-time or part-time student: `_affiliationTypes=STUDENT_FULL_TIME,STUDENT_PART_TIME`",
                     "enum": [
                         "ACTIVE_DUTY",
                         "ALUMNUS",
@@ -1892,7 +1892,7 @@
                 },
                 {
                     "collectionFormat": "multi",
-                    "description": "A comma-delimited list of verification type names (see [List Verification Types](#!/VerificationType/listVerificationTypes)). Defines the requestor's list of acceptable techniques that may be used to verify an individual.",
+                    "description": "A comma-delimited list of verification type names (see [List Verification Types](?url=swagger-all.json#!/VerificationType/listVerificationTypes)). Defines the requestor's list of acceptable techniques that may be used to verify an individual.",
                     "enum": [
                         "ASSET_REVIEW",
                         "AUTHORITATIVE",
@@ -1910,7 +1910,7 @@
                 },
                 {
                     "collectionFormat": "multi",
-                    "description": "A comma-delimited list of asset type names (see [List Asset Types](#!/AssetType/listAssetTypes)). Defines the requestor's list of acceptable documents for use with `ASSET_REVIEW` verification types.  If `ASSET_REVIEW` is not an allowable verification type, this configuration is ignored.",
+                    "description": "A comma-delimited list of asset type names (see [List Asset Types](?url=swagger-all.json#!/AssetType/listAssetTypes)). Defines the requestor's list of acceptable documents for use with `ASSET_REVIEW` verification types.  If `ASSET_REVIEW` is not an allowable verification type, this configuration is ignored.",
                     "enum": [
                         "ACCEPTANCE_LETTER",
                         "ARTICLES_OF_INCORPORATION",
@@ -1947,7 +1947,7 @@
                 },
                 {
                     "collectionFormat": "multi",
-                    "description": "A comma-delimited list of Reward IDs (see [List Rewards](#!/Reward/listRewards)). Defines any rewards to be issued when an individual is verified.",
+                    "description": "A comma-delimited list of Reward IDs (see [List Rewards](?url=swagger-all.json#!/Reward/listRewards)). Defines any rewards to be issued when an individual is verified.",
                     "in": "formData",
                     "items": {"type": "string"},
                     "name": "_rewardIds",
@@ -1962,7 +1962,7 @@
                     "type": "string"
                 },
                 {
-                    "description": "the identifier of an existing template (see [Create Template](#!/Template/createTemplate)) from which to source verification request configuration. If this value is supplied, any other request configuration directives (parameters prefixed with `_`) are ignored.",
+                    "description": "the identifier of an existing template (see [Create Template](?url=swagger-all.json#!/Template/createTemplate)) from which to source verification request configuration. If this value is supplied, any other request configuration directives (parameters prefixed with `_`) are ignored.",
                     "in": "formData",
                     "name": "templateId",
                     "required": false,
@@ -2013,7 +2013,7 @@
             },
             "post": {
                 "consumes": ["application/x-www-form-urlencoded"],
-                "description": "Update and re-submit an existing verification request.\n The previous response to this request must have a result of `null`, otherwise update is disallowed. Only identity data can be changed (parameter names as described by [List Fields](#!/Field/listFields)). Organization id/name or other configuration supplied with the original request is not modifiable.",
+                "description": "Update and re-submit an existing verification request.\n The previous response to this request must have a result of `null`, otherwise update is disallowed. Only identity data can be changed (parameter names as described by [List Fields](?url=swagger-all.json#!/Field/listFields)). Organization id/name or other configuration supplied with the original request is not modifiable.",
                 "operationId": "updateVerification",
                 "parameters": [
                     {
