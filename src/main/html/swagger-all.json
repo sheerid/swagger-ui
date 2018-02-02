@@ -5250,7 +5250,7 @@
             },
             "post": {
                 "consumes": ["application/x-www-form-urlencoded"],
-                "description": "**Perform a verification.** This is the primary method of importance for most integrations.\n Fields to supply vary based on the affiliations the caller is interested in verifying and the type of verification being performed.  For a list of which fields are relevant for a particular type of request, see the <a target='_parent' href='http://developer.sheerid.com/docs/fields.html'>verification field requirements documentation</a>.",
+                "description": "**Perform a verification.** This is the primary method of importance for most integrations.\n Fields to supply vary based on the affiliations the caller is interested in verifying and the type of verification being performed.  For a list of which fields are relevant for a particular type of request, see the [verification field requirements documentation](http://developer.sheerid.com/docs/fields.html).",
                 "operationId": "verify",
                 "parameters": [
                     {
