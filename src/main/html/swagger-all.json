@@ -1763,7 +1763,7 @@
             "operationId": "upload",
             "parameters": [
                 {
-                    "description": "one or more files, with parameter keys prefixed by `file` (Ex: `file0`, `file1`...). File type must be one of our [supported MIME types](http://developer.sheerid.com/docs/asset-mime-types.html).",
+                    "description": "one or more files, with parameter keys prefixed by `file` (Ex: `file0`, `file1`...). File type must be one of our [supported MIME types](http://developer.sheerid.com/asset-mime-types/).",
                     "in": "formData",
                     "name": "file",
                     "required": false,
