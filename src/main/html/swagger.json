@@ -1962,7 +1962,7 @@
                     "type": "string"
                 },
                 {
-                    "description": "the identifier of an existing template (see [Create Template](?url=swagger-all.json#!/Template/createTemplate)) from which to source verification request configuration. If this value is supplied, any other request configuration directives (parameters prefixed with `_`) are ignored.",
+                    "description": "the identifier of an existing template (see [Create Template](?url=swagger-all.json#!/Template/createTemplate)) from which to source verification request configuration. If this value is supplied, any other request configuration directives (parameters prefixed with `_`) will override the values from the template.",
                     "in": "formData",
                     "name": "templateId",
                     "required": false,
